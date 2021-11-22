@@ -45,8 +45,7 @@ router.get('/:idVideogame' , async (req,res,next) => {
                 }
                 return res.send(game);
             }
-            console.log("no existe ese juego")
-            res.status(404).send("No existe el juego buscado"); 
+           // res.status(404).send("No existe el juego buscado"); 
         }
     }
     catch (error) {
