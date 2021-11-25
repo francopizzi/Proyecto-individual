@@ -4,7 +4,7 @@ import React from 'react';
 function Landing() {
   return (
     <div>
-       <Link to="/videogames">
+       <Link to="/home/videogames">
             <button>
                 Explore Games
             </button>

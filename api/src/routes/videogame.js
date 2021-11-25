@@ -2,8 +2,7 @@ const { Router } = require('express');
 
 // Importo Videogame para generar un nuevo juego
 const { Videogame , Genre}= require('../db');
-
-const axios  = require('axios');
+const axios = require ('axios');
 const router = Router();
 
 const {
@@ -15,17 +14,20 @@ router.get('/:idVideogame' , async (req,res,next) => {
     const {idVideogame} = req.params;
     if (!idVideogame) return res.status(404).send("No se especifico el id");
     try {
-        if (typeof idVideogame === 'number') {
+        if (idVideogame.length < 10) {
+            // https://api.rawg.io/api/games/3328?key=88746d59f283472eafe6adbe231549ca
             let game = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`);
             if (game) {
-                game = {
+                game = { 
+                    id: game.data.id,
                     name: game.data.name,
                     background_image: game.data.background_image,
-                    description: game.data.description,
+                    description: game.data.description.slice(3,game.data.description.length-4),
                     released: game.data.released,
                     rating: game.data.rating,
-                    platforms: game.data.platforms,
-                    genres: game.data.genres
+                    platforms: game.data.platforms.map (element => (
+                        element = {id: element.platform.id , name:element.platform.name})),
+                    genres: game.data.genres.map (element => (element= {id:element.id , name:element.name}))
                 }
                 return res.send(game);
             }

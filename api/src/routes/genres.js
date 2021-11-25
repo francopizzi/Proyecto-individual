@@ -17,7 +17,13 @@ router.get('/' , async (req,res,next) => {
                 name: genresAPI[i].name
             })
         }
-        res.send(genresAPI);
+        //bulkCreate fijarse
+        // preguntar si aca hay que enviar lo de la base de datos o lo de la api
+        //res.send(genresAPI);
+        // Trayendo de la base de datos
+        let genresDB = await Genre.findAll();
+        genresDB = genresDB.map(genre => genre={id:genre.id , name: genre.name})
+        res.send(genresDB)
     }
     catch (error) {
         next (error)

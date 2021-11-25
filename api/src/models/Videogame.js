@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING//DataTypes.DECIMAL(10,2)
     },
     platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.STRING), // DataTypes.ARRAY(DataTypes.JSON),
       allowNull: false,
     }
   });
