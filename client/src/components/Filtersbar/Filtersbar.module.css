@@ -1,0 +1,11 @@
+.navigation {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.container {
+    grid-column: 2 / 3;
+    display: flexbox;
+    flex-direction: column;
+    
+}

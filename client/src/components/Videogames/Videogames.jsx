@@ -1,33 +1,28 @@
 import React from 'react';
 import { connect , useDispatch} from 'react-redux';
-import { getGamesxPage } from '../../store/actions';
-import CardVideogame from '../CardVideogame/CardVideogame.js'
+import { getGamesxPage , getAllGames} from '../../store/actions';
+import CardVideogame from '../CardVideogame/CardVideogame.jsx';
+import Filters from '../Filters/Filters';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import style from './Videogames.module.css';
 
     
 function Videogames() {
-  const reduxState = useSelector ((state)=> state)
-  let {videogamesXpage , number , flagFilter} = reduxState;  // ESTO LO PUEDO UNIR TODO EN LA MISMA LINEA
+  let {videogamesXpage , number , flagFilter} = useSelector ((state)=> state)
   const dispatch = useDispatch();
-  //let videogamesRender = [];
   React.useEffect(() => {
-    console.log("Estoy aca")
+      console.log(number);
+      console.log("Estoy aca")
       dispatch(getGamesxPage(number))
-      //videogamesRender = videogames.slice (15*(number-1) , 15*number);  
-      //console.log(videogamesRender , number)
-    },[number,flagFilter]); 
+    },[number,flagFilter /*, videogamesXpage.length*/]); 
 
-  /*
-    React.useEffect(() => {
-    console.log("Los valores son", videogames, number)
-    videogames = videogames.splice (15*(number-1) , 15*number);
-  },number)*/
   return (
-    <div>
-       <h1>Estos son los juegos:</h1>
+    <div className={style.grid}>
+        <Filters className={style.filters}/>
+       <div className={style.conteiner}>
       {
-        videogamesXpage? videogamesXpage.map ( (element) =>(
+        videogamesXpage.length && videogamesXpage.map ( (element) =>(
             <CardVideogame
             key = {element.id}
             id={element.id}
@@ -36,8 +31,9 @@ function Videogames() {
             genres = {element.genres}
             />   
         ))
-        : <h1>Loading...</h1>
+        //: <h1>Loading...</h1>
         }
+        </div>
     </div>
   );
 };

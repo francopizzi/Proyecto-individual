@@ -1,10 +1,31 @@
 .card {
-    width:400px;
-    height: 400px;
-    margin-bottom: 20px;
+    /*width: 100%;
+    height: 100%;*/
+    justify-self: stretch;
+    font-size: 10px;
+    display: grid;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr;
+    border: black solid;
+    
 }
 
 .img {
-    width:400px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
+    border: black solid;
+}
+
+.deco {
+    text-decoration: none;
+}
+
+.name {
+    font-size: 1.5rem;
+}
+
+.genre {
+    font-size: 1rem;
+    display: grid;
+    grid-template-rows: 0.25fr 0.25fr;
+    grid-template-columns: 0.5fr 0.5fr;
 }

@@ -87,8 +87,11 @@ router.post('/' , async (req,res,next) => {
                     });
                     await game.setGenres (genre.id);
                 })
+                let gameReturned = await Videogame.findByPk(game.id,{  
+                    include:Genre 
+                })
+                return res.send(gameReturned);
             }
-            return res.send(game);
         }
         catch (error) {
             return next (error);

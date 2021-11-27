@@ -14,7 +14,7 @@ function SearchBar() {
     e.preventDefault();
     dispatch(getGameByName(state));
     changeState('');
-    dispatch(definePage(0));
+    dispatch(definePage(1)); //modifique esta linea estaba en 0
   }
   
   return (

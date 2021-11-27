@@ -10,11 +10,45 @@ export const ORDER_GAMES_RATING = "ORDER_GAMES_RATING";
 export const DELETE_FILTERS = "DELETE_FILTERS";
 export const CREATED_TYPE = "CREATED_TYPE";
 export const GENRE_FILTER = "GENRE_FILTER";
+export const CREATE_GAME = "CREATE_GAME";
 
 
-export function genreFilter (genre){
+export function createGame (game){
+        
         return function (dispatch){
+                fetch("http://localhost:3001/videogame", {
+                        method: 'POST',
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(game)
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                dispatch({ type: CREATE_GAME, payload: data });
+                }) 
+        }
+}
+
+
+export function genreFilter (genre , games){
+        /*return function (dispatch){
                 fetch("http://localhost:3001/videogames/"+genre)
+                .then((response) => response.json())
+                .then((data) => {
+                dispatch({ type: GENRE_FILTER, payload: data });
+                }) 
+        }*/
+        return function (dispatch){
+                fetch("http://localhost:3001/videogames/"+genre, {
+                        method: 'POST',
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(games)
+                })
                 .then((response) => response.json())
                 .then((data) => {
                 dispatch({ type: GENRE_FILTER, payload: data });
@@ -22,12 +56,27 @@ export function genreFilter (genre){
         }
 }
 
-export function gameByRating (order){
+export function gameByRating (order, games){
+        /*
         return function (dispatch){
                 fetch("http://localhost:3001/videogames/"+order)
                 .then((response) => response.json())
                 .then((data) => {
                 dispatch({ type: ORDER_GAMES_RATING, payload: data });
+                }) 
+        }*/
+        return function (dispatch){
+                fetch("http://localhost:3001/videogames/"+order, {
+                        method: 'POST',
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(games)
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                dispatch({ type: GENRE_FILTER, payload: data });
                 }) 
         }
 }

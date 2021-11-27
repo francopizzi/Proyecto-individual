@@ -8,8 +8,7 @@ const {
     API_KEY
   } = process.env;
 
-let backGames = []
-function orderRatingAsc (a,b) {
+  function orderRatingAsc (a,b) {
     if ( a.rating < b.rating )return -1;
     if ( a.rating > b.rating ) return 1;
     return 0;    
@@ -32,6 +31,57 @@ function compare (element , filter){
     return false;  
 }
 
+
+router.post ('/:filter', (req,res,next)=> {
+    const {filter} = req.params;
+    const games = req.body;
+    let auxGames=[]
+    //console.log(filter);
+    if (filter === "Ascendente") {
+        games.sort(orderRatingAsc);
+        games.forEach(element => {
+            auxGames.push({
+                id: element.id,
+                name: element.name,
+                background_image: element.background_image,
+                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name}),
+                rating: element.rating
+            })
+        }); 
+    }
+    else if (filter === "Descendente") {
+        games.sort(orderRatingDesc);
+        games.forEach(element => {
+            auxGames.push({
+                id: element.id,
+                name: element.name,
+                background_image: element.background_image,
+                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name}),
+                rating: element.rating
+            })
+        }); 
+    }
+    // Aca hago el filtro por genero
+    else {         
+        let genreArray = games.filter (element => compare (element.genres,filter));
+        genreArray.forEach(element => {
+            auxGames.push({
+                id: element.id,
+                name: element.name,
+                background_image: element.background_image,
+                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name}),
+                rating: element.rating
+            })
+        });
+    }
+    //console.log(auxGames[0]);
+    res.send(auxGames);
+})
+
+
+
+
+/*
 router.get ('/:filter', (req, res , next)=> {
     const {filter} = req.params;
     let ratingArray = backGames;
@@ -73,7 +123,7 @@ router.get ('/:filter', (req, res , next)=> {
     }
     res.send(auxGames);
 });
-
+*/
 // router.get ('/:genre', (req, res , next)=> {
 //     const {genre} = req.params;
 //     console.log(genre);
@@ -111,7 +161,8 @@ router.get('/' , (req,res,next) => {
                     id: element.id,
                     name: element.name,
                     background_image: element.background_image,
-                    genres: element.genres.map(genre => genre={id:genre.id , name: genre.name})
+                    genres: element.genres.map(genre => genre={id:genre.id , name: genre.name}),
+                    rating: element.rating
                 })
             }); 
             if (auxGames.length > 15) auxGames = auxGames.slice(0,15);
@@ -132,17 +183,18 @@ router.get('/' , (req,res,next) => {
             let [AllGamesDB , ...AllGamesAPIarray] = response;
             let AllGamesAPI = [];
             AllGamesAPIarray.forEach(element => {AllGamesAPI =AllGamesAPI.concat(element.data.results)});
-             backGames = [...AllGamesDB , ...AllGamesAPI]
+            let allGames = [...AllGamesDB , ...AllGamesAPI]
             
             let auxGames = []
-            if (!backGames.length) return res.status(404).send("Ocurrio un error");
+            if (!allGames.length) return res.status(404).send("Ocurrio un error");
             
-            backGames.forEach(element => {
+            allGames.forEach(element => {
                 auxGames.push({
                     id: element.id,
                     name: element.name,
                     background_image: element.background_image,
-                    genres: element.genres.map(genre => genre={id:genre.id , name: genre.name})
+                    genres: element.genres.map(genre => genre={id:genre.id , name: genre.name}),
+                    rating: element.rating
                 })
             }); 
             res.send(auxGames);

@@ -12,9 +12,11 @@ router.get('/' , async (req,res,next) => {
         let genresAPI = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
         genresAPI = genresAPI.data.results;
         for (let i = 0; i< genresAPI.length; i++){
-            const newGenre = await Genre.create({
-                id: genresAPI[i].id,
-                name: genresAPI[i].name
+            const newGenre = await Genre.findOrCreate({
+               where:{
+                 id: genresAPI[i].id,
+                 name: genresAPI[i].name
+               } 
             })
         }
         //bulkCreate fijarse

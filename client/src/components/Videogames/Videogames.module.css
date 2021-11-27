@@ -1,0 +1,15 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+}
+
+.conteiner {
+    grid-column: 3 / 16;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.filters {
+    grid-column: 1 / 3 ;
+}

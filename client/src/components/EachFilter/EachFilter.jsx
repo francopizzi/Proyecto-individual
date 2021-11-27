@@ -5,7 +5,7 @@ import { orderGamesAlf , deleteFilters , createdType, gameByRating , genreFilter
 from '../../store/actions';
 
 export default function EachFilter ({name, lista}) {
-    const {genres} = useSelector(state => state);
+    const {genres , videogames} = useSelector(state => state);
     const dispatch = useDispatch();
     
     function handlerFilters (e) {
@@ -24,11 +24,11 @@ export default function EachFilter ({name, lista}) {
         }
         if (e.target.name === "Rating") {
             console.log(e.target.value)
-            dispatch(gameByRating(e.target.value))
+            dispatch(gameByRating(e.target.value , videogames))
         }
         if (e.target.name === "Genero") {
             console.log("Soy e value",e.target.value)
-            dispatch(genreFilter(e.target.value))
+            dispatch(genreFilter(e.target.value , videogames)) //ACA AGREGUE videogames
         }
     }
 
