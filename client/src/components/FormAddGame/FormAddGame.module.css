@@ -1,0 +1,128 @@
+.grid {
+    grid-row: 2/4;
+    grid-column: 3 / 7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.form {
+    grid-row: 1;
+    grid-column: 1/5;
+    display: grid;
+    /*grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;*/
+}
+
+.container {
+    background-color: #bc00dd;
+    border-color: transparent;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.label {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    display:flex;
+    justify-content: center;
+    padding-bottom: 0.25rem;
+}
+
+.error {
+    font-family: 'Roboto', sans-serif;
+    color: #ffff3f;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    margin-left: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    color:black;
+    
+    background-color: white;
+    width: 98.5%;
+    height: 1.7rem;
+    border-color: transparent;
+    border-radius: 1rem;
+}
+
+.input::placeholder {
+    padding-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    color:black;
+}
+
+.select {
+    margin-top: 0.4rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+
+    width: 98.5%;
+    border-color: transparent;
+    border-radius: 1rem;
+    padding: 1rem;
+
+}
+
+/*MEJORAR LA INTERFAZ DEL SELECT Y EL BUG DE QUE QUEDA VACIO A VECES Y ME DEJA SUBMITEAR IGUAL */
+
+/*
+.select select {
+    display: none; hide original SELECT element: 
+  }
+
+.select .select-selected{
+    background-color: black;
+    color:white;
+}
+
+*/
+
+/*VER DE ARREGLAR LAS COSAS DE DESCRIPTION*/
+.description {
+    height: 10rem;
+    overflow-y: scroll;
+    white-space: normal;
+}
+.description::placeholder {
+    display: flex;
+    vertical-align: text-top;
+}
+
+
+.btn {
+    color: black;
+    background-color: #70e000; 
+    width:25%;
+    height: 1.7rem;
+    border-color: transparent;
+    border-radius: 1rem;
+    margin: 1%;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    color: whie;
+    background-color: #bc00dd;
+    cursor: pointer;
+}

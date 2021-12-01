@@ -15,11 +15,13 @@ function Videogames() {
       console.log(number);
       console.log("Estoy aca")
       dispatch(getGamesxPage(number))
-    },[number,flagFilter /*, videogamesXpage.length*/]); 
+    },[number,flagFilter]); 
 
   return (
     <div className={style.grid}>
-        <Filters className={style.filters}/>
+        <div className={style.filters} >
+          <Filters/>
+        </div>
        <div className={style.conteiner}>
       {
         videogamesXpage.length && videogamesXpage.map ( (element) =>(

@@ -1,0 +1,7 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto auto auto;
+    background-color: #001D3D;
+}

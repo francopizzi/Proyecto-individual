@@ -6,13 +6,16 @@ function CardVideogame({id, name, backgroundImage, genres}) {
     return (
       <Link to={`/home/detailgame/${id}`} className={style.deco}>
       <div className={style.card}>
-          <h1 className={style.name}>{name}</h1>
-          <img className={style.img}src={backgroundImage}/>
-          <div className={style.genre}>    
-          {
-            genres.map ((genre)=> <h2>{genre.name}</h2>)
-          }
+          <div className={style.nameGenres}>
+            <h1 className={style.name}>{name}</h1>
+            <p className={style.titleGenre}>Generos:</p>
+            <div className={style.genres}>    
+            {
+              genres.map ((genre)=> <h2 className={style.genre}>{genre.name}</h2>)
+            }
           </div>
+          </div>
+          <img className={style.img}src={backgroundImage}/>
       </div>
       </Link>
     );

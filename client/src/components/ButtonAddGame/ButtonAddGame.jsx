@@ -1,10 +1,11 @@
 import React from 'react';
+import style from './ButtonAddGame.module.css'
 
 
 function ButtonAddGame() {
   return (
     <div>
-       <button>AddGame</button>
+       <button className={style.btn}>AddGame</button>
     </div>
   );
 };

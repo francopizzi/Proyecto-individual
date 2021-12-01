@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.filters>li>ul {
+    display:none;
+}
+
+.filters>li:hover>ul {
+    display:block;
+    
+}
+.filters>li:hover>button {
+    background-color: #bc00dd; 
+    color: white;
+    
+}
+
+.li {
+    list-style:none;
+}
+
+.btn {
+    background-color: #70e000;
+    width: 50%;
+    height: 1.7rem;
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 1rem;
+    margin: 1%;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+}

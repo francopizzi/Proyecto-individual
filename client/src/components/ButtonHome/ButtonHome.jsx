@@ -5,7 +5,7 @@ import style from './ButtonHome.module.css';
 function ButtonHome() {
   return (
     <div className={style.videogames}>
-       <button>Videogames</button>
+       <button className={style.btn}>Videogames</button>
     </div>
   );
 };

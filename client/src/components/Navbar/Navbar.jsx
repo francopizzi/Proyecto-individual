@@ -4,16 +4,20 @@ import ButtonHome from '../ButtonHome/ButtonHome';
 import SearchBar from '../SearchBar/SearchBar';
 import {Link} from 'react-router-dom';
 import style from './Navbar.module.css';
+import Logo from '../../imagen.jpg';
 
 function Navbar() {
   return (
     <div className={style.grid}>
-       <Link to="/home/videogames">
-        <ButtonHome className={style.videogames}/>
+      <img className={style.logo} src={Logo}/>
+      <div className={style.searchBar}>
+       <SearchBar />
+      </div>
+       <Link to="/home/videogames" className={style.videogames} >
+        <ButtonHome />
        </Link>
-       <SearchBar className={style.searchBar}/>
-       <Link to="/home/addgame">
-        <ButtonAddGame className={style.addGame}/>
+       <Link to="/home/addgame" className={style.addGame} >
+        <ButtonAddGame />
        </Link>
     </div>
   );

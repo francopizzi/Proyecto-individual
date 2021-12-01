@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import {createGame} from '../../store/actions'
 
+import style from './FormAddGame.module.css';
+
 
 export default function FormAddGame () {
     const {genres} = useSelector(state => state);
@@ -25,12 +27,12 @@ export default function FormAddGame () {
         platforms: [],
         genres: [],
         errors: {
-            name: '',
-            description: '',
+            name: 'Nombre no puede estar vacio',
+            description: 'Descripcion no puede estar vacio',
             released: '',
-            rating: '',
-            platforms: '',
-            genres: '',
+            rating: 'El rating debe ser un valor entre 0 y 5',
+            platforms: 'Debe incluir al menos una plataforma',
+            genres: 'Debe incluir al menos un genero',
           },
     });
 
@@ -48,7 +50,7 @@ export default function FormAddGame () {
               errors.rating = (value>= 0 && value<=5)  ? '': 'El rating debe ser un valor entre 0 y 5' ;
               break;
             case 'platforms':
-              errors.platforms = (value === []) ? '': "Debe incluir al menos una plataforma";
+              errors.platforms = value.length > 0 ? '': "Debe incluir al menos una plataforma";
             break;
             case 'genres':
               errors.genres = value.length > 0 ? '': "Debe incluir al menos un genero";
@@ -81,6 +83,7 @@ export default function FormAddGame () {
                 [value]: input[value].includes(label)?input[value].filter(element => element !== label):[...input[value], label],
                 errors
             });
+            errors = controlError(errors , value , label);
         }
         else{
             setInput({
@@ -88,11 +91,11 @@ export default function FormAddGame () {
                 [name]: value,
                 errors
             });
+            errors = controlError(errors , name , value);
         }
-        errors = controlError(errors , name , value);
         validate (input.errors);
-        
       }
+
       function handleSubmit (e){
         e.preventDefault();
         console.log(input);
@@ -116,71 +119,89 @@ export default function FormAddGame () {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Nombre</label>
-                <input
-                name="name"
-                type="text"
-                value={input.name}
-                onChange={handleChange}
-                placeholder="Nombre"></input>
-                {!input.errors.name ? null : <div>{input.errors.name}</div>}
-                <label>Descripción</label>
-                <input 
-                name="description"
-                type="text"
-                value={input.description}
-                onChange={handleChange}
-                placeholder="Descripción"></input>
-                {!input.errors.description ? null : <div>{input.errors.description}</div>}
-                <label>Fecha de lanzamiento</label>
-                <input 
-                type="date"
-                name="released"
-                value={input.released}
-                onChange={handleChange}></input>
-                <label>Rating</label>
-                <input 
-                type="text"  //Ver si modifico esto por un number y en la base de datos por in Interger
-                name="rating"
-                value={input.rating}
-                onChange={handleChange}
-                placeholder="Rating"></input>
-                {!input.errors.rating ? null : <div>{input.errors.rating}</div>}
-                <label>Géneros</label>
-                <input 
-                name="genres" 
-                multiple 
-                type="text" 
+        <div className={style.grid}>
+            <form onSubmit={handleSubmit} className={style.form}>
+                <div className={style.container}>
+                  <label className={style.label} >Nombre</label>
+                  <input
+                  className={style.input}
+                  name="name"
+                  type="text"
+                  value={input.name}
+                  onChange={handleChange}
+                  placeholder="Nombre"></input>
+                  {!input.errors.name ? null : <div className={style.error}>{input.errors.name}</div>}
+                </div>
+                <div className={style.container}>
+                  <label className={style.label} >Descripción</label>
+                  <input 
+                  className={`${style.input} ${style.description}`}
+                  name="description"
+                  type="text"
+                  value={input.description}
+                  onChange={handleChange}
+                  placeholder="Descripción"></input>
+                  {!input.errors.description ? null : <div className={style.error}>{input.errors.description}</div>}
+                </div>
+                <div className={style.container}>
+                  <label className={style.label} >Fecha de lanzamiento</label>
+                  <input 
+                  className={style.input}
+                  type="date"
+                  name="released"
+                  value={input.released}
+                  onChange={handleChange}></input>
+                </div>
+                <div className={style.container}>
+                  <label className={style.label} >Rating</label>
+                  <input 
+                  className={style.input}
+                  type="text"  //Ver si modifico esto por un number y en la base de datos por in Interger
+                  name="rating"
+                  value={input.rating}
+                  onChange={handleChange}
+                  placeholder="Rating"></input>
+                  {!input.errors.rating ? null : <div className={style.error}>{input.errors.rating}</div>}
+                </div>
+                <div className={style.container}>
+                  <label className={style.label} >Géneros</label>
+                  <input 
+                  className={style.input}
+                  name="genres" 
+                  multiple 
+                  type="text" 
                 //list="genres"
-                value = {input.genres}
+                  value = {input.genres}
                 //onChange={handleChange}
-                placeholder = "Elija del recuadro los generos"
-                />
-                {!input.errors.genres ? null : <div>{input.errors.genres}</div>}
-                <select multiple  value={input.genres} onClick={handleChange}>
-                {
+                  placeholder = "Elija del recuadro los generos"
+                  />
+                  {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
+                  <select className={style.select} multiple  value={input.genres} onClick={handleChange}>
+                  {
                     genres.map ((element) => <option key = {element.id} value="genres" label={element.name}/>)
-                }
-                </select>
-                <label>Plataformas</label>
-                <input
-                type="text"
-                multiple
-                name="platforms"
-                //list="platforms"
-                value={input.platforms}
-                //onChange={handleChange}
-                placeholder = "Elija del recuadro las plataformas"
-                />
-                {!input.errors.platforms ? null : <div>{input.errors.platforms}</div>}
-                <select multiple  value={input.platforms} onClick={handleChange}>
-                {
+                  }
+                  </select>
+                </div>  
+                <div className={style.container}>
+                  <label className={style.label} >Plataformas</label>
+                  <input
+                  className={style.input}
+                  type="text"
+                  multiple
+                  name="platforms"
+                  //list="platforms"
+                  value={input.platforms}
+                  //onChange={handleChange}
+                  placeholder = "Elija del recuadro las plataformas"
+                  />
+                  {!input.errors.platforms ? null : <div className={style.error}>{input.errors.platforms}</div>}
+                  <select className={style.select} multiple  value={input.platforms} onClick={handleChange}>
+                  {
                     platforms.map ((element,index) => <option key = {index} value="platforms" label={element}/>)
-                }
-                </select>
-                <input disabled={disabled} type="submit" value="Submit" />
+                  }
+                  </select>
+                </div>
+                <input className={style.btn} disabled={disabled} type="submit" value="Submit" />
             </form>
         </div>
     );

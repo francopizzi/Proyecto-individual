@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch} from 'react-redux';
 import { orderGamesAlf , deleteFilters , createdType, gameByRating , genreFilter} 
 from '../../store/actions';
+import style from './EachFilter.module.css'
 
 export default function EachFilter ({name, lista}) {
     const {genres , videogames} = useSelector(state => state);
@@ -33,18 +34,31 @@ export default function EachFilter ({name, lista}) {
     }
 
     return (
-        <div>
-            <li><button name={name} onClick={handlerFilters}>{name}</button>
-                
+        <div className={style.eachFilter}>
+            <li className={style.li}>
+                <button name={name} onClick={handlerFilters} className= {style.btn}>{name}</button>
                 <ul>
                 {
                     lista && lista.map (element => 
-                    <li><button name={name} value={element} onClick={handlerFilters}>{element}</button></li>)
+                    <li className={style.li}>
+                        <button className= {style.btn2} name={name} value={element} onClick={handlerFilters}>
+                            {element}
+                        </button>
+                    </li>)
                 }
                 </ul>
                 {
                     name === "Genero" && <ul>{genres.map (element => 
-                    <li><button key={element.id} name={name} value={element.name} onClick={handlerFilters}>{element.name}</button></li>)}</ul>
+                    <li className= {style.li}>
+                        <button 
+                            className= {style.btn2}
+                            key={element.id} 
+                            name={name} 
+                            value={element.name} 
+                            onClick={handlerFilters}>
+                        {element.name}
+                        </button>
+                        </li>)}</ul>
                 }
             </li>
         </div>

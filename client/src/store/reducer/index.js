@@ -7,7 +7,7 @@ const initialState = {
     videogames: [],
     genres: [],
     videogamesXpage: [],
-    number:1,
+    number:0,
     gameDetail: {},
     flagFilter: true,
     originalvideogames:[],

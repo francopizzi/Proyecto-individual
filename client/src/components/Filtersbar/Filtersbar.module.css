@@ -1,11 +1,26 @@
 .navigation {
+    grid-row: 3;
+    grid-column: 1/9;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(8 , 1fr);
+    grid-template-rows: 1fr;
+    padding: 1.5rem
 }
 
-.container {
-    grid-column: 2 / 3;
-    display: flexbox;
-    flex-direction: column;
-    
+
+.before {
+    grid-row: 1;
+    grid-column: 3/4;
+}
+
+.numbers {
+    grid-row: 1;
+    grid-column: 4/6;
+    display: grid;
+    grid-template-columns: repeat(7 , 1fr);
+}
+
+.after {
+    grid-row: 1;
+    grid-column: 6/7;
 }
