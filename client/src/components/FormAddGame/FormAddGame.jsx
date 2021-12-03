@@ -160,6 +160,11 @@ export default function FormAddGame () {
                   value={input.background_image}
                   onChange={handleChange}
                   placeholder="URL de la imagen del juego"></textarea>
+                  {
+                    input.background_image.length ?
+                    <img className={style.img} src={input.background_image} alt="La imagen del juego a crear"/>
+                    :<span></span>
+                  }
                 </div>
                 <div className={style.container}>
                   <label className={style.label} >Fecha de lanzamiento</label>
