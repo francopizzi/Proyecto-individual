@@ -6,25 +6,28 @@ import Filters from '../Filters/Filters';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import style from './Videogames.module.css';
+import Loading from '../../Loading.gif';
 
     
 function Videogames() {
-  let {videogamesXpage , number , flagFilter} = useSelector ((state)=> state)
+  let {videogamesXpage , number , flagFilter , videogames} = useSelector ((state)=> state)
   const dispatch = useDispatch();
   React.useEffect(() => {
       console.log(number);
       console.log("Estoy aca")
       dispatch(getGamesxPage(number))
-    },[number,flagFilter]); 
+    },[number, flagFilter , videogames ]); 
 
   return (
     <div className={style.grid}>
         <div className={style.filters} >
           <Filters/>
         </div>
-       <div className={style.conteiner}>
       {
-        videogamesXpage.length && videogamesXpage.map ( (element) =>(
+        videogamesXpage.length?
+       <div className={style.conteiner}>
+        {
+         videogamesXpage.map ( (element) =>(
             <CardVideogame
             key = {element.id}
             id={element.id}
@@ -33,9 +36,11 @@ function Videogames() {
             genres = {element.genres}
             />   
         ))
-        //: <h1>Loading...</h1>
         }
-        </div>
+       </div>
+        : <img className={style.carga}src="https://acegif.com/wp-content/uploads/loading-87.gif" 
+        alt="Imagen de carga"></img> 
+      }
     </div>
   );
 };

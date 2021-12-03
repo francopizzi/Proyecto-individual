@@ -23,14 +23,16 @@ function Filtersbar() {
       
     return (
     <div className={style.navigation}>
-        {number>1 && <button name="Anterior" onClick={handlerPage} className={style.before}>Anterior</button>}
+        {number>1 && <button name="Anterior" onClick={handlerPage} 
+        className={`${style.before} ${style.btn}`}>Anterior</button>}
         <div className={style.numbers} >
        {
-           numberPages.map((page)=> <ButtonNavigation number={page}/>)
+           numberPages.map((page)=> <ButtonNavigation key={page} number={page}/>)
         }
         </div>
         {number<Math.ceil(videogames.length/15) && <button 
-        name= "Siguiente" onClick={handlerPage} className={style.after}>Siguiente</button>}
+        name= "Siguiente" onClick={handlerPage} 
+        className={`${style.after} ${style.btn}`}>Siguiente</button>}
     </div>
   );
 };

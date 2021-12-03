@@ -26,6 +26,7 @@ export default function FormAddGame () {
         rating: '',
         platforms: [],
         genres: [],
+        background_image:'',
         errors: {
             name: 'Nombre no puede estar vacio',
             description: 'Descripcion no puede estar vacio',
@@ -47,13 +48,15 @@ export default function FormAddGame () {
               errors.description = value.length > 0 ? '': 'Descripcion no puede estar vacio' ;
               break;
             case 'rating': 
-              errors.rating = (value>= 0 && value<=5)  ? '': 'El rating debe ser un valor entre 0 y 5' ;
+              errors.rating = (value>= 0 && value<=5 )  ? '': 'El rating debe ser un valor entre 0 y 5' ;
               break;
             case 'platforms':
-              errors.platforms = value.length > 0 ? '': "Debe incluir al menos una plataforma";
+              errors.platforms = ((value && input.platforms[0] !== value ) || input.platforms[1] ) ? ''
+              : "Debe incluir al menos una plataforma";
             break;
             case 'genres':
-              errors.genres = value.length > 0 ? '': "Debe incluir al menos un genero";
+              errors.genres = ((value && input.genres[0] !== value)|| input.genres[1]) ? ''
+              : "Debe incluir al menos un genero";
             break;
             default:
               break;
@@ -76,6 +79,8 @@ export default function FormAddGame () {
     function handleChange(e) {
         const { value, name , label} = e.target;
         let {errors} = input;
+
+        //errors = controlError(errors , value , label);
         
         if(value === "genres" || value === "platforms") {
             setInput({
@@ -83,6 +88,8 @@ export default function FormAddGame () {
                 [value]: input[value].includes(label)?input[value].filter(element => element !== label):[...input[value], label],
                 errors
             });
+            //console.log(input);
+            //console.log(errors, value, label);
             errors = controlError(errors , value , label);
         }
         else{
@@ -107,6 +114,7 @@ export default function FormAddGame () {
             rating: '',
             platforms: [],
             genres: [],
+            background_image: '',
             errors: {
                 name: '',
                 description: '',
@@ -134,14 +142,24 @@ export default function FormAddGame () {
                 </div>
                 <div className={style.container}>
                   <label className={style.label} >Descripción</label>
-                  <input 
+                  <textarea 
                   className={`${style.input} ${style.description}`}
                   name="description"
                   type="text"
                   value={input.description}
                   onChange={handleChange}
-                  placeholder="Descripción"></input>
+                  placeholder="Descripción"></textarea>
                   {!input.errors.description ? null : <div className={style.error}>{input.errors.description}</div>}
+                </div>
+                <div className={style.container}>
+                  <label className={style.label} >Imagen URL</label>
+                  <textarea 
+                  className={`${style.input} ${style.bk}`}
+                  name="background_image"
+                  type="text"
+                  value={input.background_image}
+                  onChange={handleChange}
+                  placeholder="URL de la imagen del juego"></textarea>
                 </div>
                 <div className={style.container}>
                   <label className={style.label} >Fecha de lanzamiento</label>
@@ -176,7 +194,7 @@ export default function FormAddGame () {
                   placeholder = "Elija del recuadro los generos"
                   />
                   {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
-                  <select className={style.select} multiple  value={input.genres} onClick={handleChange}>
+                  <select  className={style.select} multiple  value={input.genres} onClick={handleChange}>
                   {
                     genres.map ((element) => <option key = {element.id} value="genres" label={element.name}/>)
                   }
@@ -195,7 +213,7 @@ export default function FormAddGame () {
                   placeholder = "Elija del recuadro las plataformas"
                   />
                   {!input.errors.platforms ? null : <div className={style.error}>{input.errors.platforms}</div>}
-                  <select className={style.select} multiple  value={input.platforms} onClick={handleChange}>
+                  <select  className={style.select} multiple  value={input.platforms} onClick={handleChange}>
                   {
                     platforms.map ((element,index) => <option key = {index} value="platforms" label={element}/>)
                   }
@@ -207,80 +225,3 @@ export default function FormAddGame () {
     );
 }
 
-/*
-
-class FormAddGame extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        name: '',
-        lastname: '',
-        user: '',
-        errors: {
-          name: '',
-        },
-        disabled: true
-      };
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    validarForm(errors) {
-      let valid = true;
-      Object.values(errors).forEach( (val) => val.length > 0 && (valid = false)
-      );
-      if(valid) {
-        this.setState({
-          disabled: false
-        })
-      } else {
-        this.setState({
-          disabled: true
-        })
-      }
-    }
-    
-    handleSubmit (e){
-        e.preventDefault();
-        console.log(this.state);
-        //dispatch(createGame(input));
-    }
-
-    handleChange(e) {
-      const { name, value } = e.target;
-      let errors = this.state.errors;
-  
-      switch (name) {
-        case 'name': 
-          errors.name = value.length < 5 ? 'Nombre debe tener 5 caracteres' : '';
-          break;
-        default:
-          break;
-      }
-      this.setState({
-        [name]: value, // Sintaxis ES6 para actualizar la key correspondiente
-        errors
-      });
-      console.log(this.state)
-      this.validarForm(this.state.errors)
-    }
-  
-    render() {
-      return (
-        <form style={{display: 'flex', flexDirection: 'column', width: '150px'}} onSubmit={this.handleSubmit}>
-            <input
-              name="name"
-              type="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              placeholder="Nombre" />
-            {!this.state.errors.name ? null : <div>{this.state.errors.name}</div>}
-            <input disabled={this.state.disabled} type="submit" value="Submit" />
-        </form>
-      );
-    }
-  };
-  
-  export default FormAddGame;
-  */

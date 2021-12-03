@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch} from 'react-redux';
 import { definePage} from '../../store/actions';
+import style from './ButtonNavigation.module.css';
 
 
 function ButtonNavigation({number}) {
@@ -10,7 +11,7 @@ function ButtonNavigation({number}) {
   }
   return (
     <div>
-       <button value={number} onClick={handlerChangePage}>{number}</button>
+       <button className={style.btn} value={number} onClick={handlerChangePage}>{number}</button>
     </div>
   );
 };

@@ -39,9 +39,9 @@ export default function EachFilter ({name, lista}) {
                 <button name={name} onClick={handlerFilters} className= {style.btn}>{name}</button>
                 <ul>
                 {
-                    lista && lista.map (element => 
-                    <li className={style.li}>
-                        <button className= {style.btn2} name={name} value={element} onClick={handlerFilters}>
+                    lista && lista.map ((element,index) => 
+                    <li key={index} className={style.li}>
+                        <button  className= {style.btn2} name={name} value={element} onClick={handlerFilters}>
                             {element}
                         </button>
                     </li>)
@@ -49,10 +49,9 @@ export default function EachFilter ({name, lista}) {
                 </ul>
                 {
                     name === "Genero" && <ul>{genres.map (element => 
-                    <li className= {style.li}>
+                    <li className= {style.li} key={element.id} >
                         <button 
                             className= {style.btn2}
-                            key={element.id} 
                             name={name} 
                             value={element.name} 
                             onClick={handlerFilters}>

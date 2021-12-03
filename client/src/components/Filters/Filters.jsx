@@ -9,11 +9,11 @@ export default function Filters () {
             <ul className={style.filters}>
                 <li className={style.li}><button className={style.btn}>Filtros</button>
                     <ul>
-                        <EachFilter name="Quitar filtros"/>
-                        <EachFilter name="Alfabetico" lista={["Ascendente","Descendente"]}/>
-                        <EachFilter name="Rating" lista={["Ascendente","Descendente"]} />
-                        <EachFilter name="¿Donde se creo?" lista={["Base de datos","API"]}/>
-                        <EachFilter name="Genero"/>
+                        <EachFilter key={1} name="Quitar filtros"/>
+                        <EachFilter key={2} name="Alfabetico" lista={["Ascendente","Descendente"]}/>
+                        <EachFilter key={3} name="Rating" lista={["Ascendente","Descendente"]} />
+                        <EachFilter key={4} name="¿Donde se creo?" lista={["Base de datos","API"]}/>
+                        <EachFilter key={5} name="Genero"/>
                     </ul>
                 </li>
             </ul>

@@ -10,15 +10,15 @@ function Navbar() {
   return (
     <div className={style.grid}>
       <img className={style.logo} src={Logo}/>
-      <div className={style.searchBar}>
-       <SearchBar />
-      </div>
        <Link to="/home/videogames" className={style.videogames} >
         <ButtonHome />
        </Link>
        <Link to="/home/addgame" className={style.addGame} >
         <ButtonAddGame />
        </Link>
+      <div className={style.searchBar}>
+       <SearchBar />
+      </div>
     </div>
   );
 };

@@ -16,6 +16,7 @@ export const CREATE_GAME = "CREATE_GAME";
 export function createGame (game){
         
         return function (dispatch){
+                console.log(game);
                 fetch("http://localhost:3001/videogame", {
                         method: 'POST',
                         headers: {
@@ -103,6 +104,7 @@ export function orderGamesAlf (tipo , flag) {
 
 export function getGameDetail (id){
         return function (dispatch){
+                console.log("Estoy por hacer el fetch con id:" , id)
                 fetch("http://localhost:3001/videogame/"+id)
                 .then((response) => response.json())
                 .then((data) => {

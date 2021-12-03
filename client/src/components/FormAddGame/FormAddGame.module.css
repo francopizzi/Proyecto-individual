@@ -12,6 +12,7 @@
     gap: 1rem;*/
 }
 
+
 .container {
     background-color: #bc00dd;
     border-color: transparent;
@@ -93,15 +94,41 @@
 
 /*VER DE ARREGLAR LAS COSAS DE DESCRIPTION*/
 .description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    color:black;
+    
+    background-color: white;
+    width: 98.5%;
     height: 10rem;
-    overflow-y: scroll;
+    border-color: transparent;
+    border-radius: 1rem;
+    /*overflow-y: scroll;*/
     white-space: normal;
+    resize:none;
 }
 .description::placeholder {
-    display: flex;
-    vertical-align: text-top;
+    padding-left: 10px;
+    padding-top:10px;
+    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    color:black;
 }
 
+.bk {
+    resize:none;
+    height: 3rem;
+}
+
+
+
+.bk::placeholder {
+    padding-left: 10px;
+    padding-top:10px;
+}
 
 .btn {
     color: black;
@@ -122,7 +149,13 @@
 }
 
 .btn:hover {
-    color: whie;
+    color: white;
     background-color: #bc00dd;
     cursor: pointer;
+}
+
+.btn:disabled {
+    color: white;
+    background-color: #353434;
+    cursor:not-allowed;
 }

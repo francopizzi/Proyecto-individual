@@ -21,7 +21,7 @@ function App() {
       dispatch(getAllGenres())
     },[]);
   return (
-    <div className={style.grid}>
+    <div className={`${style.grid} ${style.bk}`}>
         <Route
         path="/home"
         component={Navbar}

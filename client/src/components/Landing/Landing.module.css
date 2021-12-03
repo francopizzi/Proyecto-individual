@@ -29,6 +29,8 @@
     font-family: 'VT323', monospace;
     font-size: 1.3rem;
     letter-spacing: 0.05rem;
+    
+    padding-right: 3rem;
 }
 
 .btn:hover {

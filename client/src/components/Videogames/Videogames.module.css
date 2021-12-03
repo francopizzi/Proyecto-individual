@@ -17,3 +17,13 @@
     grid-row: 1;
     grid-column: 1/3;
 }
+
+.carga {
+    grid-column: 1 /9;
+    width: 250px;/*30%; 150*/
+    height: 170px; /*35%; 100*/
+
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}

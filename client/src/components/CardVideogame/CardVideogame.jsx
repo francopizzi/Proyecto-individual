@@ -11,7 +11,7 @@ function CardVideogame({id, name, backgroundImage, genres}) {
             <p className={style.titleGenre}>Generos:</p>
             <div className={style.genres}>    
             {
-              genres.map ((genre)=> <h2 className={style.genre}>{genre.name}</h2>)
+              genres.map ((genre,index)=> <h2 key={index} className={style.genre}>{genre.name}</h2>)
             }
           </div>
           </div>
