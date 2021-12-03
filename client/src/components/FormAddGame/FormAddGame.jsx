@@ -2,13 +2,13 @@ import React from 'react';
 import { useDispatch} from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import {createGame} from '../../store/actions'
+import {createGame , backendErros} from '../../store/actions'
 
 import style from './FormAddGame.module.css';
 
 
 export default function FormAddGame () {
-    const {genres} = useSelector(state => state);
+    const {genres , backErros} = useSelector(state => state);
     // CONSULTAR SI PUEDO UTILIZAR LA RUTA PARA LAS PLATAFORMAS
     const platforms = ["PC","PlayStation 5","PlayStation 4","PlayStation 3","PlayStation 2","PlayStation",
     "PS Vita", "PSP","Xbox One","Xbox Series S/X","Xbox 360","Xbox","iOS","Android",
@@ -38,6 +38,11 @@ export default function FormAddGame () {
     });
 
     const [disabled , setDisabled] = useState(true);
+
+    if (backErros) {
+      alert("El juego con el nombre especificado ya existe en la base de datos");
+      dispatch(backendErros());
+    }
 
     function controlError (errors, name , value) {
         switch (name) {
@@ -116,12 +121,12 @@ export default function FormAddGame () {
             genres: [],
             background_image: '',
             errors: {
-                name: '',
-                description: '',
-                released: '',
-                rating: '',
-                platforms: '',
-                genres: '',
+              name: 'Nombre no puede estar vacio',
+              description: 'Descripcion no puede estar vacio',
+              released: '',
+              rating: 'El rating debe ser un valor entre 0 y 5',
+              platforms: 'Debe incluir al menos una plataforma',
+              genres: 'Debe incluir al menos un genero',
               },
         })
     }

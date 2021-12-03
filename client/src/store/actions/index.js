@@ -11,6 +11,13 @@ export const DELETE_FILTERS = "DELETE_FILTERS";
 export const CREATED_TYPE = "CREATED_TYPE";
 export const GENRE_FILTER = "GENRE_FILTER";
 export const CREATE_GAME = "CREATE_GAME";
+export const BACK_ERROR = "BACK_ERROR"
+
+export function backendErros () {
+        return function (dispatch) {
+                dispatch({ type: BACK_ERROR});
+        }
+}
 
 
 export function createGame (game){
@@ -27,6 +34,7 @@ export function createGame (game){
                 })
                 .then((response) => response.json())
                 .then((data) => {
+                        console.log(data);
                 dispatch({ type: CREATE_GAME, payload: data });
                 }) 
         }

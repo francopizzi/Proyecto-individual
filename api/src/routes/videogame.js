@@ -113,7 +113,8 @@ router.post('/' , async (req,res,next) => {
                 return res.send(gameReturned);
             }
             else {
-                res.send("El juego ya existe");
+                console.log("El juego ya existe")
+                return res.send({error:"El juego ya existe"});
             }
         }
         catch (error) {
