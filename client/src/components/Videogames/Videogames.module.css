@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .grid {
     grid-row: 2;
     grid-column: 1 /9;
@@ -26,4 +28,25 @@
     display: flex;
     justify-self: center;
     align-self: center;
+}
+
+.alert {
+    grid-row: 1;
+    grid-column: 3/9;
+}
+
+.gameOver {
+    font-family: 'VT323', monospace;
+    font-size: 4rem;
+    letter-spacing: 0.05rem;
+    color: #FF002B;
+    text-align: center;
+}
+
+.text {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    letter-spacing: 0.05rem;
+    color: white;
+    text-align: center;
 }

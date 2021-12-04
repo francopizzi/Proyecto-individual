@@ -10,9 +10,10 @@ const initialState = {
     number:1,
     gameDetail: {},
     flagFilter: true,
+    backErros: false,
+    filtersapplied: ['', '', ''],
     originalvideogames:[],
     //videogamesByName: [],
-    backErros: false,
 };
 
 const reducer = (state=initialState , action) => {
@@ -31,28 +32,38 @@ const reducer = (state=initialState , action) => {
                 : JSON.stringify(JSON.parse(state.originalvideogames)),
                 backErros: action.payload.hasOwnProperty("error") ? true : false}
         case GET_GAMESXPAGE:
-            return {...state , 
-                videogamesXpage: action.payload?state.videogames.slice(15*(action.payload-1) , 15*action.payload)
+            return {...state ,  videogamesXpage: action.payload?state.videogames.slice(15*(action.payload-1) , 15*action.payload)
             :state.videogamesXpage}
         case GET_GAME_BY_NAME:
-            return {...state , flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
+            return {...state , 
+            flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
         case GET_GAME_DETAIL:
             return {...state , gameDetail: action.payload};
         case ORDER_VIDEOGAMES:
             return {...state, flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload === "Ascendente"? state.videogames.sort(orderAlf)
-            :state.videogames.sort(orderAlf).reverse()}
+            :state.videogames.sort(orderAlf).reverse(),
+            filtersapplied: state.filtersapplied.map((element , index)=> (index === 0 ? element=action.payload : element))
+        }
         case DELETE_FILTERS:
-            return {...state, flagFilter: !state.flagFilter, number:1, videogames: JSON.parse(state.originalvideogames)};
+            return {...state, flagFilter: !state.flagFilter, number:1, 
+                videogames: JSON.parse(state.originalvideogames),
+                filtersapplied:['', '', '']};
         case CREATED_TYPE:
             return {...state , flagFilter: !state.flagFilter,  number:1,
-                videogames: typeOfCreation(action.payload, state.videogames,state.originalvideogames)};
+                videogames: typeOfCreation(action.payload, state.videogames,state.originalvideogames),
+                filtersapplied: state.filtersapplied.map((element , index)=> (index === 2 ? element=action.payload : element))};
         case ORDER_GAMES_RATING:
             return {...state ,  flagFilter: !state.flagFilter, number:1,
-                videogames: action.payload}
+                videogames: action.payload.games,
+                filtersapplied: state.filtersapplied.map((element , index)=> (
+                    index === 1 ? element=action.payload.filter : element))}
         case GENRE_FILTER:
             return {...state ,  flagFilter: !state.flagFilter, number:1,
-                videogames: action.payload}
+                videogames: action.payload.games,
+                filtersapplied: !state.filtersapplied.includes(action.payload.filter) ? [...state.filtersapplied, action.payload.filter]
+                : state.filtersapplied
+            }
         case BACK_ERROR:
             return {...state , backErros: !state.backErros}
         default: return state;

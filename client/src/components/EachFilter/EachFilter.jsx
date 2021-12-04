@@ -6,7 +6,7 @@ from '../../store/actions';
 import style from './EachFilter.module.css'
 
 export default function EachFilter ({name, lista}) {
-    const {genres , videogames} = useSelector(state => state);
+    const {genres , videogames } = useSelector(state => state);
     const dispatch = useDispatch();
     
     function handlerFilters (e) {
@@ -35,31 +35,32 @@ export default function EachFilter ({name, lista}) {
 
     return (
         <div className={style.eachFilter}>
-            <li className={style.li}>
-                <button name={name} onClick={handlerFilters} className= {style.btn}>{name}</button>
-                <ul>
-                {
-                    lista && lista.map ((element,index) => 
-                    <li key={index} className={style.li}>
-                        <button  className= {style.btn2} name={name} value={element} onClick={handlerFilters}>
+                <li className={style.li}>
+                    <button name={name} onClick={handlerFilters} className= {style.btn}>{name}</button>
+                    <ul>
+                    {
+                        lista && lista.map ((element,index) => 
+                        <li key={index} className={style.li}>
+                            <button  className= {style.btn2} name={name} value={element} onClick={handlerFilters}>
                             {element}
-                        </button>
-                    </li>)
-                }
-                </ul>
-                {
+                            </button>
+                        </li>)
+                    }
+                    </ul>
+                    {
                     name === "Genero" && <ul>{genres.map (element => 
-                    <li className= {style.li} key={element.id} >
-                        <button 
+                        <li className= {style.li} key={element.id} >
+                            <button 
                             className= {style.btn2}
                             name={name} 
                             value={element.name} 
                             onClick={handlerFilters}>
-                        {element.name}
-                        </button>
-                        </li>)}</ul>
+                            {element.name}
+                            </button>
+                        </li>)
+                    }</ul>
                 }
-            </li>
-        </div>
+                </li>
+            </div>
     )
 }

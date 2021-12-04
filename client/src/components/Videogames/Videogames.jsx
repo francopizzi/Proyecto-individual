@@ -10,7 +10,7 @@ import Loading from '../../Loading.gif';
 
     
 function Videogames() {
-  let {videogamesXpage , number , flagFilter , videogames} = useSelector ((state)=> state)
+  let {videogamesXpage , number , flagFilter , videogames , filtersapplied} = useSelector ((state)=> state)
   const dispatch = useDispatch();
   React.useEffect(() => {
       console.log(number);
@@ -38,7 +38,13 @@ function Videogames() {
         ))
         }
        </div>
-        : <img className={style.carga}src="https://acegif.com/wp-content/uploads/loading-87.gif" 
+        : 
+        (filtersapplied[0] !== '' || filtersapplied[1] !== '' || filtersapplied[2] !== '' || filtersapplied[3] )?
+        <div className={style.alert}>
+          <h1 className={style.gameOver}>GAME OVER</h1> 
+          <h1 className={style.text}>No existen juegos con los filtros seleccionados</h1> 
+        </div>
+        :<img className={style.carga}src="https://acegif.com/wp-content/uploads/loading-87.gif" 
         alt="Imagen de carga"></img> 
       }
     </div>

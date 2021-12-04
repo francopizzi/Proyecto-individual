@@ -73,24 +73,33 @@
 
     width: 98.5%;
     border-color: transparent;
-    border-radius: 1rem;
+    /*border-radius: 1rem;*/
     padding: 1rem;
 
 }
-
-/*MEJORAR LA INTERFAZ DEL SELECT Y EL BUG DE QUE QUEDA VACIO A VECES Y ME DEJA SUBMITEAR IGUAL */
-
 /*
-.select select {
-    display: none; hide original SELECT element: 
-  }
-
-.select .select-selected{
-    background-color: black;
-    color:white;
+.bar {
+    margin: 2rem auto;
+    border: 1px solid #aaa;
+    height: 300px;
+    width:90%;
+    max-width: 400px;
+    background: #f1f2f3;
+    overflow:auto;
+    box-sizing: border-box;
+    padding:0 1rem;
 }
 
-*/
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.select::-webkit-scrollbar {
+    width: 12px;
+}
+
+.select::-webkit-scrollbar-thumb {
+    background-color: #70e000;
+    border-radius: 1rem;
+}
 
 /*VER DE ARREGLAR LAS COSAS DE DESCRIPTION*/
 .description {
@@ -119,6 +128,15 @@
     color:black;
 }
 
+.description::-webkit-scrollbar {
+    width: 12px;
+}
+
+.description::-webkit-scrollbar-thumb {
+    background-color: #70e000;
+    border-radius: 1rem;
+}
+
 .bk {
     resize:none;
     height: 5rem;
@@ -128,6 +146,15 @@
 .bk::placeholder {
     padding-left: 10px;
     padding-top:10px;
+}
+
+.bk::-webkit-scrollbar {
+    width: 12px;
+}
+
+.bk::-webkit-scrollbar-thumb {
+    background-color: #70e000;
+    border-radius: 1rem;
 }
 
 .img {
@@ -171,3 +198,4 @@
     background-color: #353434;
     cursor:not-allowed;
 }
+

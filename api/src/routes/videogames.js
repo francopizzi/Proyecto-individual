@@ -36,7 +36,7 @@ router.post ('/:filter', (req,res,next)=> {
     const {filter} = req.params;
     const games = req.body;
     let auxGames=[]
-    //console.log(filter);
+    console.log(filter);
     if (filter === "Ascendente") {
         games.sort(orderRatingAsc);
         games.forEach(element => {
@@ -75,7 +75,8 @@ router.post ('/:filter', (req,res,next)=> {
         });
     }
     //console.log(auxGames[0]);
-    res.send(auxGames);
+    console.log(filter);
+    res.send({games: auxGames, filter});
 })
 
 

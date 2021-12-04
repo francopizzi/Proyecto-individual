@@ -204,7 +204,7 @@ export default function FormAddGame () {
                   placeholder = "Elija del recuadro los generos"
                   />
                   {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
-                  <select  className={style.select} multiple  value={input.genres} onClick={handleChange}>
+                  <select  className={`${style.select}`} multiple  value={input.genres} onClick={handleChange}>
                   {
                     genres.map ((element) => <option key = {element.id} value="genres" label={element.name}/>)
                   }

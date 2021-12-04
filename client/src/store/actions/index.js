@@ -85,7 +85,8 @@ export function gameByRating (order, games){
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                dispatch({ type: GENRE_FILTER, payload: data });
+                        console.log("soy el dispatch",data)
+                dispatch({ type: ORDER_GAMES_RATING, payload: data });
                 }) 
         }
 }
