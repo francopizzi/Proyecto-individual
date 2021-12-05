@@ -2,12 +2,22 @@ import React from 'react';
 import { useDispatch} from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import {createGame , backendErros} from '../../store/actions'
+import {createGame , backendErros , deleteGames} from '../../store/actions'
 
 import style from './FormAddGame.module.css';
 
 
 export default function FormAddGame () {
+
+    React.useEffect(() => {
+    console.log("Elimine todos los juegos")
+    dispatch(deleteGames());
+    },[]);
+
+
+
+
+
     const {genres , backErros} = useSelector(state => state);
     // CONSULTAR SI PUEDO UTILIZAR LA RUTA PARA LAS PLATAFORMAS
     const platforms = ["PC","PlayStation 5","PlayStation 4","PlayStation 3","PlayStation 2","PlayStation",

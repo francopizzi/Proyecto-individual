@@ -12,6 +12,13 @@ export const CREATED_TYPE = "CREATED_TYPE";
 export const GENRE_FILTER = "GENRE_FILTER";
 export const CREATE_GAME = "CREATE_GAME";
 export const BACK_ERROR = "BACK_ERROR"
+export const DELETE_GAMES = "DELETE_GAMES"
+
+export function deleteGames() {
+        return function (dispatch) {
+                dispatch({ type: DELETE_GAMES});
+        }
+}
 
 export function backendErros () {
         return function (dispatch) {

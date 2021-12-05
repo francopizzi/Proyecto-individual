@@ -1,6 +1,7 @@
 import {
             DEFINE_PAGE, GET_ALL_GAMES , GET_ALL_GENRES , GET_GAMESXPAGE ,GET_GAME_BY_NAME, GET_GAME_DETAIL,
-            ORDER_VIDEOGAMES, ORDER_GAMES_RATING , DELETE_FILTERS, CREATED_TYPE,GENRE_FILTER , CREATE_GAME, BACK_ERROR
+            ORDER_VIDEOGAMES, ORDER_GAMES_RATING , DELETE_FILTERS, CREATED_TYPE,GENRE_FILTER , CREATE_GAME, 
+            BACK_ERROR , DELETE_GAMES
         }  from '../actions';
 
 const initialState = {
@@ -38,7 +39,7 @@ const reducer = (state=initialState , action) => {
             return {...state , 
             flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
         case GET_GAME_DETAIL:
-            return {...state , gameDetail: action.payload};
+            return {...state , gameDetail: action.payload  ,  videogames: []};
         case ORDER_VIDEOGAMES:
             return {...state, flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload === "Ascendente"? state.videogames.sort(orderAlf)
@@ -66,6 +67,8 @@ const reducer = (state=initialState , action) => {
             }
         case BACK_ERROR:
             return {...state , backErros: !state.backErros}
+        case DELETE_GAMES:
+            return {...state , videogames: []}
         default: return state;
     }
 }
