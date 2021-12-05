@@ -36,10 +36,10 @@ const reducer = (state=initialState , action) => {
             return {...state ,  videogamesXpage: action.payload?state.videogames.slice(15*(action.payload-1) , 15*action.payload)
             :state.videogamesXpage}
         case GET_GAME_BY_NAME:
-            return {...state , 
+            return {...state , filtersapplied: ['', '', ''],
             flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
         case GET_GAME_DETAIL:
-            return {...state , gameDetail: action.payload  ,  videogames: []};
+            return {...state , gameDetail: action.payload  ,  videogames: [],filtersapplied: ['', '', '']};
         case ORDER_VIDEOGAMES:
             return {...state, flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload === "Ascendente"? state.videogames.sort(orderAlf)
@@ -68,7 +68,7 @@ const reducer = (state=initialState , action) => {
         case BACK_ERROR:
             return {...state , backErros: !state.backErros}
         case DELETE_GAMES:
-            return {...state , videogames: []}
+            return {...state , videogames: [],filtersapplied: ['', '', '']}
         default: return state;
     }
 }

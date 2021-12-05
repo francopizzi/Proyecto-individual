@@ -75,7 +75,7 @@ router.post ('/:filter', (req,res,next)=> {
         });
     }
     //console.log(auxGames[0]);
-    console.log(filter);
+    //console.log(filter);
     res.send({games: auxGames, filter});
 })
 
