@@ -8,7 +8,7 @@ function ButtonHome() {
   const dispatch = useDispatch();
   
   function handleOnClick() {
-    //dispatch(getAllGames());
+    dispatch(getAllGames());
   }
   
 
