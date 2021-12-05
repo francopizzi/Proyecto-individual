@@ -82,8 +82,7 @@
     display: grid;
     grid-template-rows: repeat(2 , 50px);  /* aca tenia puesto 0.5fr */
     grid-template-columns: repeat(3 ,1fr); /* aca tenia puesto 0.33 fr*/
-
-    position: relative;
+    
     text-align: center;
 }
 

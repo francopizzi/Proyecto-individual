@@ -18,3 +18,26 @@
     color: white;
     cursor: pointer;
 }
+
+
+.btnActive {
+    background-color: black;
+    width: 50%;
+    height: 1.7rem;
+    border-color: transparent;
+    border-radius: 0.5rem;
+    margin: 1%;
+    font-family: 'Roboto', cursive;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    color: white;
+    padding-right: 1rem
+}
+
+/*
+.btn:focus{
+    background-color: black;
+    color: white;
+}
+*/

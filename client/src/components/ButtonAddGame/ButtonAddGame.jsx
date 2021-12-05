@@ -5,7 +5,7 @@ import style from './ButtonAddGame.module.css'
 function ButtonAddGame() {
   return (
     <div>
-       <button className={style.btn}>AddGame</button>
+       <button className={style.btn}>Crear juego</button>
     </div>
   );
 };

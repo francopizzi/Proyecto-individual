@@ -29,11 +29,11 @@ export default function FormAddGame () {
         background_image:'',
         errors: {
             name: 'Nombre no puede estar vacio',
-            description: 'Descripcion no puede estar vacio',
+            description: 'Descripción no puede estar vacio',
             released: '',
             rating: 'El rating debe ser un valor entre 0 y 5',
             platforms: 'Debe incluir al menos una plataforma',
-            genres: 'Debe incluir al menos un genero',
+            genres: 'Debe incluir al menos un género',
           },
     });
 
@@ -137,6 +137,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Nombre</label>
                   <input
+                  autocomplete="off"
                   className={style.input}
                   name="name"
                   type="text"
@@ -174,6 +175,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Fecha de lanzamiento</label>
                   <input 
+                  autocomplete="off"
                   className={style.input}
                   type="date"
                   name="released"
@@ -183,6 +185,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Rating</label>
                   <input 
+                  autocomplete="off"
                   className={style.input}
                   type="text"  //Ver si modifico esto por un number y en la base de datos por in Interger
                   name="rating"
@@ -194,6 +197,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Géneros</label>
                   <input 
+                  autocomplete="off"
                   className={style.input}
                   name="genres" 
                   multiple 
@@ -201,7 +205,7 @@ export default function FormAddGame () {
                 //list="genres"
                   value = {input.genres}
                 //onChange={handleChange}
-                  placeholder = "Elija del recuadro los generos"
+                  placeholder = "Seleccione los géneros"
                   />
                   {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
                   <select  className={`${style.select}`} multiple  value={input.genres} onClick={handleChange}>
@@ -213,6 +217,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Plataformas</label>
                   <input
+                  autocomplete="off"
                   className={style.input}
                   type="text"
                   multiple
@@ -220,7 +225,7 @@ export default function FormAddGame () {
                   //list="platforms"
                   value={input.platforms}
                   //onChange={handleChange}
-                  placeholder = "Elija del recuadro las plataformas"
+                  placeholder = "Seleccione las plataformas"
                   />
                   {!input.errors.platforms ? null : <div className={style.error}>{input.errors.platforms}</div>}
                   <select  className={style.select} multiple  value={input.platforms} onClick={handleChange}>
@@ -229,7 +234,7 @@ export default function FormAddGame () {
                   }
                   </select>
                 </div>
-                <input className={style.btn} disabled={disabled} type="submit" value="Submit" />
+                <input className={style.btn} disabled={disabled} type="submit" value="Crear"/>
             </form>
         </div>
     );

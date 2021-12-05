@@ -1,19 +1,34 @@
 import React from 'react';
-import { useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { definePage} from '../../store/actions';
 import style from './ButtonNavigation.module.css';
 
 
 function ButtonNavigation({number}) {
+  const [isActive, setActive] = React.useState(false);
+
+  const reduxPage = useSelector((state)=> state.number);
+  React.useEffect(() => {
+    console.log("cambio el numero a: " , reduxPage)
+    reduxPage != number ? setActive(false) : setActive(true);
+  },[reduxPage]); 
+
+
   const dispatch = useDispatch();
+
   function handlerChangePage (e) {
     dispatch(definePage(e.target.value));
+    //setActive(!isActive);
   }
   return (
     <div>
-       <button className={style.btn} value={number} onClick={handlerChangePage}>{number}</button>
+       <button className={isActive ? style.btnActive : style.btn} 
+       value={number} onClick={handlerChangePage}>{number}</button>
     </div>
   );
 };
 
 export default ButtonNavigation;
+
+
+  

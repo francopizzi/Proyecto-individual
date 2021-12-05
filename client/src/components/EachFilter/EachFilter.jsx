@@ -11,7 +11,7 @@ export default function EachFilter ({name, lista}) {
     
     function handlerFilters (e) {
         // despacho un filtro con el nombre
-        if (e.target.name === "Alfabetico") {
+        if (e.target.name === "Alfabético") {
             console.log(e.target.value)
             dispatch(orderGamesAlf(e.target.value));
         }
@@ -19,7 +19,7 @@ export default function EachFilter ({name, lista}) {
             console.log(e.target.name)
             dispatch(deleteFilters());
         }
-        if (e.target.name === "¿Donde se creo?" ) {
+        if (e.target.name === "¿Dónde se creó?" ) {
             console.log(e.target.value)
             dispatch(createdType(e.target.value))
         }
@@ -27,7 +27,7 @@ export default function EachFilter ({name, lista}) {
             console.log(e.target.value)
             dispatch(gameByRating(e.target.value , videogames))
         }
-        if (e.target.name === "Genero") {
+        if (e.target.name === "Género") {
             console.log("Soy e value",e.target.value)
             dispatch(genreFilter(e.target.value , videogames)) //ACA AGREGUE videogames
         }
@@ -48,7 +48,7 @@ export default function EachFilter ({name, lista}) {
                     }
                     </ul>
                     {
-                    name === "Genero" && <ul>{genres.map (element => 
+                    name === "Género" && <ul>{genres.map (element => 
                         <li className= {style.li} key={element.id} >
                             <button 
                             className= {style.btn2}

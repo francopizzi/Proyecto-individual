@@ -1,9 +1,9 @@
 .grid {
-    /*
+    
     position: sticky;
     top:0px;
     background-color: #001D3D;
-    */
+    
     grid-row: 1;
     grid-column: 1/9;
     display: grid;
