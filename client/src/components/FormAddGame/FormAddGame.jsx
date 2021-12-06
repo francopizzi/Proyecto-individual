@@ -9,16 +9,18 @@ import style from './FormAddGame.module.css';
 
 export default function FormAddGame () {
 
+    const [created, changeCreated] = useState({
+      name: ''
+    });
+
     React.useEffect(() => {
     console.log("Elimine todos los juegos")
     dispatch(deleteGames());
+    changeCreated('');
     },[]);
 
-
-
-
-
-    const {genres , backErros} = useSelector(state => state);
+    
+    const {genres , backErros , originalvideogames , gameCreated} = useSelector(state => state);
     // CONSULTAR SI PUEDO UTILIZAR LA RUTA PARA LAS PLATAFORMAS
     const platforms = ["PC","PlayStation 5","PlayStation 4","PlayStation 3","PlayStation 2","PlayStation",
     "PS Vita", "PSP","Xbox One","Xbox Series S/X","Xbox 360","Xbox","iOS","Android",
@@ -48,12 +50,12 @@ export default function FormAddGame () {
     });
 
     const [disabled , setDisabled] = useState(true);
-
+/*
     if (backErros) {
       alert("El juego con el nombre especificado ya existe en la base de datos");
       dispatch(backendErros());
     }
-
+*/
     function controlError (errors, name , value) {
         switch (name) {
             case 'name': 
@@ -120,8 +122,9 @@ export default function FormAddGame () {
 
       function handleSubmit (e){
         e.preventDefault();
-        console.log(input);
+        //console.log(input);
         dispatch(createGame(input));
+        changeCreated({...created , name:input.name}); 
         setInput({
             name: '',
             description: '',
@@ -139,10 +142,25 @@ export default function FormAddGame () {
               genres: 'Debe incluir al menos un genero',
               },
         })
-    }
+      }
+
+
 
     return (
+      backErros? 
+      <div className={style.alert1}>
+          <h1 className={style.gameOver}>GAME OVER</h1> 
+          <h1 className={style.text}>El juego con el nombre especificado ya existe en la base de datos</h1> 
+      </div>
+      :
         <div className={style.grid}>
+          {
+            gameCreated?/*(JSON.parse(originalvideogames)[0].name === created.name )?*/
+            <div className={style.alert2}>
+                <h1 className={style.complete}>MISSION COMPLETE</h1> 
+                <h1 className={style.text}>El juego se creó correctamente</h1>
+            </div>
+            :
             <form onSubmit={handleSubmit} className={style.form}>
                 <div className={style.container}>
                   <label className={style.label} >Nombre</label>
@@ -178,7 +196,9 @@ export default function FormAddGame () {
                   placeholder="URL de la imagen del juego"></textarea>
                   {
                     input.background_image.length ?
-                    <img className={style.img} src={input.background_image} alt="La imagen del juego a crear"/>
+                    <div className={style.imgContainer}>
+                      <img className={style.img} src={input.background_image} alt="La imagen del juego a crear"/>
+                    </div>
                     :<span></span>
                   }
                 </div>
@@ -246,6 +266,7 @@ export default function FormAddGame () {
                 </div>
                 <input className={style.btn} disabled={disabled} type="submit" value="Crear"/>
             </form>
+          }
         </div>
     );
 }

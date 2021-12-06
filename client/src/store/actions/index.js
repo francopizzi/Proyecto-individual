@@ -13,6 +13,7 @@ export const GENRE_FILTER = "GENRE_FILTER";
 export const CREATE_GAME = "CREATE_GAME";
 export const BACK_ERROR = "BACK_ERROR"
 export const DELETE_GAMES = "DELETE_GAMES"
+export const GAME_CREATED = "GAME_CREATED"
 
 export function deleteGames() {
         return function (dispatch) {
@@ -23,6 +24,12 @@ export function deleteGames() {
 export function backendErros () {
         return function (dispatch) {
                 dispatch({ type: BACK_ERROR});
+        }
+}
+
+export function gameCreated () {
+        return function (dispatch) {
+                dispatch ({type: GAME_CREATED})
         }
 }
 

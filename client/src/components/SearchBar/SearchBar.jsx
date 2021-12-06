@@ -1,5 +1,5 @@
 import React from 'react';
-import { getGameByName , definePage } from '../../store/actions';
+import { getGameByName , definePage , backendErros} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 import style from './SearchBar.module.css'
 import {Link} from 'react-router-dom';
@@ -19,6 +19,7 @@ function SearchBar() {
       changeState('');
       dispatch(definePage(1)); //modifique esta linea estaba en 0
     }
+    //dispatch(backendErros());
   }
   
   return (
@@ -27,7 +28,7 @@ function SearchBar() {
            <input value={state}onChange={handlerInput} placeholder="Ingrese el juego"
            className={style.input}></input>
            <Link  to='/home/videogames'>
-           <button className={style.btn}>Buscar</button>
+            <button className={style.btn}>Buscar</button>
            </Link>
        </form>
     </div>

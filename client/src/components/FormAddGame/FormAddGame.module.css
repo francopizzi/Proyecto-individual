@@ -157,13 +157,16 @@
     border-radius: 1rem;
 }
 
+.imgContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .img {
     width: 200px;
     height: 300px;
     
-    position: relative;
-    left: 32%;
-
     margin-top: 0.5rem;
     border-color: transparent;
     border-radius: 1rem;
@@ -199,3 +202,36 @@
     cursor:not-allowed;
 }
 
+.alert1 {
+    grid-row: 2/4;
+    grid-column: 3/7;
+}
+
+.alert2{
+    grid-row: 1;
+    grid-column: 1/5;
+}
+
+.gameOver {
+    font-family: 'VT323', monospace;
+    font-size: 4rem;
+    letter-spacing: 0.05rem;
+    color: #FF002B;
+    text-align: center;
+}
+
+.text {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    letter-spacing: 0.05rem;
+    color: white;
+    text-align: center;
+}
+
+.complete {
+    font-family: 'VT323', monospace;
+    font-size: 4rem;
+    letter-spacing: 0.05rem;
+    color: #058a26;
+    text-align: center;
+}

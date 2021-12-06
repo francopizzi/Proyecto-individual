@@ -1,7 +1,7 @@
 import {
             DEFINE_PAGE, GET_ALL_GAMES , GET_ALL_GENRES , GET_GAMESXPAGE ,GET_GAME_BY_NAME, GET_GAME_DETAIL,
             ORDER_VIDEOGAMES, ORDER_GAMES_RATING , DELETE_FILTERS, CREATED_TYPE,GENRE_FILTER , CREATE_GAME, 
-            BACK_ERROR , DELETE_GAMES
+            BACK_ERROR , DELETE_GAMES, GAME_CREATED
         }  from '../actions';
 
 const initialState = {
@@ -14,6 +14,7 @@ const initialState = {
     backErros: false,
     filtersapplied: ['', '', ''],
     originalvideogames:[],
+    gameCreated: false,
     //videogamesByName: [],
 };
 
@@ -27,16 +28,17 @@ const reducer = (state=initialState , action) => {
             return {...state , number: action.payload};
             case CREATE_GAME:
                 return {...state , flagFilter: !state.flagFilter, number:1,
-                videogames: !action.payload.hasOwnProperty("error") ? state.videogames = [action.payload, ...JSON.parse(state.originalvideogames)] 
-                : state.videogames = JSON.parse(state.originalvideogames),
-                originalvideogames: action.payload? JSON.stringify([action.payload, ...JSON.parse(state.originalvideogames)])
+                /* videogames: !action.payload.hasOwnProperty("error") ? state.videogames = [action.payload, ...JSON.parse(state.originalvideogames)] 
+                : state.videogames = JSON.parse(state.originalvideogames),*/  //CAMBIE ESTO
+                originalvideogames: !action.payload.hasOwnProperty("error")? JSON.stringify([action.payload, ...JSON.parse(state.originalvideogames)])
                 : JSON.stringify(JSON.parse(state.originalvideogames)),
-                backErros: action.payload.hasOwnProperty("error") ? true : false}
+                backErros: action.payload.hasOwnProperty("error") ? true : false,
+                gameCreated:action.payload.hasOwnProperty("error") ? false : true}
         case GET_GAMESXPAGE:
             return {...state ,  videogamesXpage: action.payload?state.videogames.slice(15*(action.payload-1) , 15*action.payload)
             :state.videogamesXpage}
         case GET_GAME_BY_NAME:
-            return {...state , filtersapplied: ['', '', ''],
+            return {...state , filtersapplied: ['', '', ''], gameCreated:false, backErros:false,
             flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
         case GET_GAME_DETAIL:
             return {...state , gameDetail: action.payload  ,  videogames: [],filtersapplied: ['', '', '']};
@@ -66,9 +68,11 @@ const reducer = (state=initialState , action) => {
                 : state.filtersapplied
             }
         case BACK_ERROR:
-            return {...state , backErros: !state.backErros}
+            return {...state , backErros: false}
         case DELETE_GAMES:
             return {...state , videogames: [],filtersapplied: ['', '', '']}
+        case GAME_CREATED: 
+            return {...state , gameCreated: false}
         default: return state;
     }
 }
