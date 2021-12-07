@@ -15,7 +15,7 @@ function ButtonAddGame() {
 
   return (
     <div>
-       <button onClick={handleOnClick} className={style.btn}>Crear juego</button>
+       <button onClick={handleOnClick} className={style.btn}>Agregar juego</button>
     </div>
   );
 };

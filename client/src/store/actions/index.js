@@ -37,7 +37,7 @@ export function gameCreated () {
 export function createGame (game){
         
         return function (dispatch){
-                console.log(game);
+                //console.log(game);
                 fetch("http://localhost:3001/videogame", {
                         method: 'POST',
                         headers: {
@@ -48,7 +48,7 @@ export function createGame (game){
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                        console.log(data);
+                        //console.log(data);
                 dispatch({ type: CREATE_GAME, payload: data });
                 }) 
         }
@@ -127,7 +127,7 @@ export function orderGamesAlf (tipo , flag) {
 
 export function getGameDetail (id){
         return function (dispatch){
-                console.log("Estoy por hacer el fetch con id:" , id)
+                //console.log("Estoy por hacer el fetch con id:" , id)
                 fetch("http://localhost:3001/videogame/"+id)
                 .then((response) => response.json())
                 .then((data) => {

@@ -63,7 +63,7 @@ router.post ('/:filter', (req,res,next)=> {
     }
     // Aca hago el filtro por genero
     else {         
-        let genreArray = games.filter (element => compare (element.genres,filter));
+        let genreArray = games.filter (element => compare (element.genres , filter));
         genreArray.forEach(element => {
             auxGames.push({
                 id: element.id,
@@ -81,56 +81,6 @@ router.post ('/:filter', (req,res,next)=> {
 
 
 
-
-/*
-router.get ('/:filter', (req, res , next)=> {
-    const {filter} = req.params;
-    let ratingArray = backGames;
-    let auxGames=[]
-    if (filter === "Ascendente") {
-        ratingArray.sort(orderRatingAsc);
-        ratingArray.forEach(element => {
-            auxGames.push({
-                id: element.id,
-                name: element.name,
-                background_image: element.background_image,
-                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name})
-            })
-        }); 
-    }
-    else if (filter === "Descendente") {
-        ratingArray.sort(orderRatingDesc);
-        ratingArray.forEach(element => {
-            auxGames.push({
-                id: element.id,
-                name: element.name,
-                background_image: element.background_image,
-                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name})
-            })
-        }); 
-    }
-    // Aca hago el filtro por genero
-    else {         
-        let genreArray = backGames.filter (element => compare (element.genres,filter));
-        
-        genreArray.forEach(element => {
-            auxGames.push({
-                id: element.id,
-                name: element.name,
-                background_image: element.background_image,
-                genres: element.genres.map(genre => genre={id:genre.id , name: genre.name})
-            })
-        }); 
-    }
-    res.send(auxGames);
-});
-*/
-// router.get ('/:genre', (req, res , next)=> {
-//     const {genre} = req.params;
-//     console.log(genre);
-    
-//     // FALTA TOMAR LOS JUEGOS DE LA BASE DE DATOS QUE COINCIDAN CON LOS GENEROS
-// })
 
 
 router.get('/' , (req,res,next) => {

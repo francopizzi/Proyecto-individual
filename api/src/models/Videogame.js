@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
       type:  DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4 //genero el ID de forma automatica
+      defaultValue: DataTypes.UUIDV4 
     },
     name: {
       type: DataTypes.STRING,
@@ -19,13 +19,13 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     released: {
-      type: DataTypes.STRING, //o DataTypes.DATEONLY
+      type: DataTypes.STRING, 
     },
     rating: {
-      type: DataTypes.STRING//DataTypes.DECIMAL(10,2)
+      type: DataTypes.STRING
     },
     platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING), // DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.STRING), 
       allowNull: false,
     },
     background_image: {

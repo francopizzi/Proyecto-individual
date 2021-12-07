@@ -26,10 +26,9 @@ function removeTags(str) {
 router.get('/:idVideogame' , async (req,res,next) => {
     const {idVideogame} = req.params;
     if (!idVideogame) return res.status(404).send("No se especifico el id");
-    console.log(idVideogame);
+    //console.log(idVideogame);
     try {
         if (idVideogame.length < 10) {
-            // https://api.rawg.io/api/games/3328?key=88746d59f283472eafe6adbe231549ca
             let game = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`);
             if (game) {
                 game = { 
@@ -48,7 +47,7 @@ router.get('/:idVideogame' , async (req,res,next) => {
             res.status(404).send("No existe el juego buscado");
         }
         else {
-            console.log("Estoy buscando el juego en la DB")
+            //console.log("Estoy buscando el juego en la DB")
             let game = await Videogame.findByPk(idVideogame, { include: Genre });
             if(game) {
                 game = {
@@ -68,7 +67,7 @@ router.get('/:idVideogame' , async (req,res,next) => {
         }
     }
     catch (error) {
-        res.status(404).send("No existe el juego buscado"); // aca funciona ver bien porque
+        res.status(404).send("No existe el juego buscado"); 
         return next();
     }
 }); 
@@ -89,7 +88,7 @@ router.post('/' , async (req,res,next) => {
         try {
             const [game , created] = await Videogame.findOrCreate ({
                 where: {
-                    name
+                    name: name.toUpperCase()
                 },
                 defaults: {
                     description,
@@ -113,7 +112,7 @@ router.post('/' , async (req,res,next) => {
                 return res.send(gameReturned);
             }
             else {
-                console.log("El juego ya existe")
+                //console.log("El juego ya existe")
                 return res.send({error:"El juego ya existe"});
             }
         }

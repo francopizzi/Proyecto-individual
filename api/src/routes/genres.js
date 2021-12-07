@@ -19,9 +19,7 @@ router.get('/' , async (req,res,next) => {
                } 
             })
         }
-        //bulkCreate fijarse
-        // preguntar si aca hay que enviar lo de la base de datos o lo de la api
-        //res.send(genresAPI);
+        
         // Trayendo de la base de datos
         let genresDB = await Genre.findAll();
         genresDB = genresDB.map(genre => genre={id:genre.id , name: genre.name})
@@ -30,16 +28,7 @@ router.get('/' , async (req,res,next) => {
     catch (error) {
         next (error)
     }
-    /*axios.get(
-        `https://api.rawg.io/api/genres?key=${API_KEY}`
-      )
-      .then(r => r.data)
-      .then(({results}) => {
-        res.send(results);
-      })
-      .catch (error => next(error));
-    */
-    //res.send("soy get de genres");
+    
 });
 
 

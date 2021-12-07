@@ -21,7 +21,8 @@ const initialState = {
 const reducer = (state=initialState , action) => {
     switch (action.type){
         case GET_ALL_GAMES:
-            return {...state, videogames: action.payload , originalvideogames: JSON.stringify(action.payload)};
+            return {...state, filtersapplied: ['', '', ''],
+                videogames: action.payload , originalvideogames: JSON.stringify(action.payload)};
         case GET_ALL_GENRES:
             return {...state , genres:action.payload};
         case DEFINE_PAGE:
@@ -46,7 +47,9 @@ const reducer = (state=initialState , action) => {
             return {...state, flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload === "Ascendente"? state.videogames.sort(orderAlf)
             :state.videogames.sort(orderAlf).reverse(),
-            filtersapplied: state.filtersapplied.map((element , index)=> (index === 0 ? element=action.payload : element))
+            filtersapplied: state.filtersapplied.map((element , index)=> (
+                index === 0 ? element=action.payload : (index === 1? '' : element)
+                ))
         }
         case DELETE_FILTERS:
             return {...state, flagFilter: !state.flagFilter, number:1, 
@@ -60,7 +63,7 @@ const reducer = (state=initialState , action) => {
             return {...state ,  flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload.games,
                 filtersapplied: state.filtersapplied.map((element , index)=> (
-                    index === 1 ? element=action.payload.filter : element))}
+                    index === 1 ? element=action.payload.filter : (index === 0? '' : element)))}
         case GENRE_FILTER:
             return {...state ,  flagFilter: !state.flagFilter, number:1,
                 videogames: action.payload.games,

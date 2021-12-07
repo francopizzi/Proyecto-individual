@@ -42,7 +42,7 @@ export default function FormAddGame () {
         errors: {
             name: 'Nombre no puede estar vacio',
             description: 'Descripción no puede estar vacio',
-            released: '',
+            released: '',//PUEDO BORRRAR ESTO PORQUE NO LO USO
             rating: 'El rating debe ser un valor entre 0 y 5',
             platforms: 'Debe incluir al menos una plataforma',
             genres: 'Debe incluir al menos un género',
@@ -122,7 +122,7 @@ export default function FormAddGame () {
 
       function handleSubmit (e){
         e.preventDefault();
-        //console.log(input);
+        console.log(input);
         dispatch(createGame(input));
         changeCreated({...created , name:input.name}); 
         setInput({
@@ -163,7 +163,7 @@ export default function FormAddGame () {
             :
             <form onSubmit={handleSubmit} className={style.form}>
                 <div className={style.container}>
-                  <label className={style.label} >Nombre</label>
+                  <label className={style.label}>Nombre</label>
                   <input
                   autocomplete="off"
                   className={style.input}
@@ -264,7 +264,7 @@ export default function FormAddGame () {
                   }
                   </select>
                 </div>
-                <input className={style.btn} disabled={disabled} type="submit" value="Crear"/>
+                <input className={style.btn} disabled={disabled} type="submit" value="Agregar"/>
             </form>
           }
         </div>
