@@ -21,7 +21,7 @@ const initialState = {
 const reducer = (state=initialState , action) => {
     switch (action.type){
         case GET_ALL_GAMES:
-            return {...state, filtersapplied: ['', '', ''],
+            return {...state, filtersapplied: ['', '', ''], number:1,
                 videogames: action.payload , originalvideogames: JSON.stringify(action.payload)};
         case GET_ALL_GENRES:
             return {...state , genres:action.payload};

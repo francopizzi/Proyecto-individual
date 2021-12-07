@@ -88,10 +88,13 @@ router.get('/' , (req,res,next) => {
 
 
     if (name) {
+    try {
+        console.log(name.toUpperCase())
         let promiseAllGamesDB = Videogame.findAll({
             where: {
-               name: {[Op.iLike]: "%" + name + "%"}
-            }
+               name: {[Op.iLike]: "%" + name.toUpperCase() + "%"}
+            },
+            include: Genre     
         });
         let promiseAllGamesAPI = axios.get(
             `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
@@ -104,6 +107,7 @@ router.get('/' , (req,res,next) => {
             let [AllGamesDB , AllGamesAPI] = response;
             let allGames = [...AllGamesDB , ...AllGamesAPI.data.results]
             let auxGames = []
+            //console.log("juegos de la base de datos" , AllGamesDB)
             
             if (!allGames.length) return res.status(404).send("No existe ningun juego con el nombre solicitado");
             
@@ -119,9 +123,14 @@ router.get('/' , (req,res,next) => {
             if (auxGames.length > 15) auxGames = auxGames.slice(0,15);
             res.send(auxGames);
         })
-    } 
+    }
+    catch(error) {
+        next(error);
+    }
+} 
 
     else {
+    try{
         let allPromises = [];
         allPromises.push(Videogame.findAll({include: Genre}));
         for (let i = 1; i <=5 ; i++){
@@ -151,6 +160,9 @@ router.get('/' , (req,res,next) => {
             res.send(auxGames);
         })
     }
+    catch (error){
+        next(error);
+    }}
 
 });
 module.exports = router;
