@@ -9,7 +9,7 @@ import Logo from '../../imagen.jpg';
 function Navbar() {
   return (
     <div className={style.grid}>
-      <img className={style.logo} src={Logo}/>
+      <img className={style.logo} src={Logo} alt="Logo pagina web"/>
        <Link to="/home/videogames" className={style.videogames} >
         <ButtonHome />
        </Link>

@@ -2,10 +2,12 @@ const { Router } = require('express');
 const {Genre}= require('../db');
 const axios  = require('axios');
 const router = Router();
-
+/*
 const {
     API_KEY
   } = process.env;
+*/
+const API_KEY="88746d59f283472eafe6adbe231549ca"
 
 router.get('/' , async (req,res,next) => {
     try {

@@ -1,20 +1,17 @@
 import React from 'react';
-import { connect , useDispatch} from 'react-redux';
-import { getGamesxPage , getAllGames} from '../../store/actions';
+import { useDispatch} from 'react-redux';
+import { getGamesxPage } from '../../store/actions';
 import CardVideogame from '../CardVideogame/CardVideogame.jsx';
 import Filters from '../Filters/Filters';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import style from './Videogames.module.css';
-import Loading from '../../Loading.gif';
+
 
     
 function Videogames() {
   let {videogamesXpage , number , flagFilter , videogames , filtersapplied} = useSelector ((state)=> state)
   const dispatch = useDispatch();
   React.useEffect(() => {
-      console.log(number);
-      console.log("Estoy aca")
       dispatch(getGamesxPage(number))
     },[number, flagFilter , videogames ]); 
 
@@ -51,21 +48,4 @@ function Videogames() {
   );
 };
 
-
-/*
-export const mapStateToProps = function(state){
-  return {
-  videogames: state.videogames
-};
-}
-
-
-export const mapDispatchToProps = function (dispatch){
- return{
-    getAllGames: () => dispatch(getAllGames())
- };
-}
-
-export default  connect(mapStateToProps, mapDispatchToProps)(Videogames);
-*/
 export default Videogames;

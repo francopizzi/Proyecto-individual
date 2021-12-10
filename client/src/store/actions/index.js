@@ -1,4 +1,3 @@
-const axios  = require('axios');
 export const GET_ALL_GAMES = "GET_ALL_GAMES";
 export const GET_ALL_GENRES = "GET_ALL_GENRES";
 export const DEFINE_PAGE = "DEFINE_PAGE";
@@ -37,7 +36,6 @@ export function gameCreated () {
 export function createGame (game){
         
         return function (dispatch){
-                //console.log(game);
                 fetch("http://localhost:3001/videogame", {
                         method: 'POST',
                         headers: {
@@ -48,7 +46,6 @@ export function createGame (game){
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                        //console.log(data);
                 dispatch({ type: CREATE_GAME, payload: data });
                 }) 
         }
@@ -56,13 +53,6 @@ export function createGame (game){
 
 
 export function genreFilter (genre , games){
-        /*return function (dispatch){
-                fetch("http://localhost:3001/videogames/"+genre)
-                .then((response) => response.json())
-                .then((data) => {
-                dispatch({ type: GENRE_FILTER, payload: data });
-                }) 
-        }*/
         return function (dispatch){
                 fetch("http://localhost:3001/videogames/"+genre, {
                         method: 'POST',
@@ -80,14 +70,6 @@ export function genreFilter (genre , games){
 }
 
 export function gameByRating (order, games){
-        /*
-        return function (dispatch){
-                fetch("http://localhost:3001/videogames/"+order)
-                .then((response) => response.json())
-                .then((data) => {
-                dispatch({ type: ORDER_GAMES_RATING, payload: data });
-                }) 
-        }*/
         return function (dispatch){
                 fetch("http://localhost:3001/videogames/"+order, {
                         method: 'POST',
@@ -99,7 +81,6 @@ export function gameByRating (order, games){
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                        console.log("soy el dispatch",data)
                 dispatch({ type: ORDER_GAMES_RATING, payload: data });
                 }) 
         }
@@ -119,7 +100,7 @@ export function deleteFilters (){
         }
 }
 
-export function orderGamesAlf (tipo , flag) {
+export function orderGamesAlf (tipo) {
         return function (dispatch) {
                 dispatch({type: ORDER_VIDEOGAMES , payload: tipo})
         }
@@ -127,7 +108,6 @@ export function orderGamesAlf (tipo , flag) {
 
 export function getGameDetail (id){
         return function (dispatch){
-                //console.log("Estoy por hacer el fetch con id:" , id)
                 fetch("http://localhost:3001/videogame/"+id)
                 .then((response) => response.json())
                 .then((data) => {
@@ -166,11 +146,6 @@ export function getAllGames (){
                 dispatch({ type: GET_ALL_GAMES, payload: data });
                 }) 
         }
-/*
-        return axios("http://localhost:3001/videogames")
-        .then ((response) => {
-                dispatch ({type: GET_ALL_GAMES , payload: response.data});
-        }) */
 }
 
 export function getAllGenres () {

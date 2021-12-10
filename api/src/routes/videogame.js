@@ -4,10 +4,12 @@ const { Router } = require('express');
 const { Videogame , Genre}= require('../db');
 const axios = require ('axios');
 const router = Router();
-
+/*
 const {
     API_KEY
   } = process.env;
+*/
+const API_KEY="88746d59f283472eafe6adbe231549ca"
 
 /*
 function removeTags(str) {
@@ -24,11 +26,12 @@ function removeTags(str) {
 
 
 router.get('/:idVideogame' , async (req,res,next) => {
+    //const {idVideogame , created} = req.params;
     const {idVideogame} = req.params;
     if (!idVideogame) return res.status(404).send("No se especifico el id");
-    //console.log(idVideogame);
+
     try {
-        if (idVideogame.length < 10) {
+        if(idVideogame.length<10) { //if (!created) {
             let game = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`);
             if (game) {
                 game = { 
@@ -47,7 +50,6 @@ router.get('/:idVideogame' , async (req,res,next) => {
             res.status(404).send("No existe el juego buscado");
         }
         else {
-            //console.log("Estoy buscando el juego en la DB")
             let game = await Videogame.findByPk(idVideogame, { include: Genre });
             if(game) {
                 game = {
@@ -60,10 +62,8 @@ router.get('/:idVideogame' , async (req,res,next) => {
                     platforms: game.platforms,
                     genres: game.genres
                 }
-            //console.log(game);
                 return res.send(game);
             }
-           // res.status(404).send("No existe el juego buscado"); 
         }
     }
     catch (error) {
@@ -83,7 +83,6 @@ router.post('/' , async (req,res,next) => {
         genres,
         background_image
     } = req.body;
-    //console.log(background_image)
     if (name && description  && platforms && genres) {
         try {
             const [game , created] = await Videogame.findOrCreate ({
@@ -95,11 +94,11 @@ router.post('/' , async (req,res,next) => {
                     released,
                     rating,
                     platforms,
-                    background_image
+                    background_image,
+                   // created: true
                 }
             })
             if (created)  {
-                //console.log("Estoy aca y le voy a crear los generos")
                 genres.forEach (async (element) => {
                     let genre = await Genre.findOne({ 
                         where: {name: element} 
@@ -109,10 +108,18 @@ router.post('/' , async (req,res,next) => {
                 let gameReturned = await Videogame.findByPk(game.id,{  
                     include:Genre 
                 })
+                gameReturned = {
+                    id: gameReturned.id,
+                    name: gameReturned.name,
+                    description: gameReturned.description,
+                    released: gameReturned.released,
+                    rating: gameReturned.rating,
+                    platforms: gameReturned.platforms,
+                    background_image: gameReturned.background_image,
+                }
                 return res.send(gameReturned);
             }
             else {
-                //console.log("El juego ya existe")
                 return res.send({error:"El juego ya existe"});
             }
         }

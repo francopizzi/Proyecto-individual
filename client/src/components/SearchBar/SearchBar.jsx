@@ -1,5 +1,5 @@
 import React from 'react';
-import { getGameByName , definePage , backendErros} from '../../store/actions';
+import { getGameByName , definePage } from '../../store/actions';
 import {useDispatch} from 'react-redux';
 import style from './SearchBar.module.css'
 import {Link} from 'react-router-dom';
@@ -17,9 +17,8 @@ function SearchBar() {
     if (state !== '') {
       dispatch(getGameByName(state));
       changeState('');
-      dispatch(definePage(1)); //modifique esta linea estaba en 0
+      dispatch(definePage(1)); 
     }
-    //dispatch(backendErros());
   }
   
   return (

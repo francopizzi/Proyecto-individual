@@ -15,7 +15,6 @@ const initialState = {
     filtersapplied: ['', '', ''],
     originalvideogames:[],
     gameCreated: false,
-    //videogamesByName: [],
 };
 
 const reducer = (state=initialState , action) => {
@@ -28,9 +27,7 @@ const reducer = (state=initialState , action) => {
         case DEFINE_PAGE:
             return {...state , number: action.payload};
             case CREATE_GAME:
-                return {...state , flagFilter: !state.flagFilter, number:1,
-                /* videogames: !action.payload.hasOwnProperty("error") ? state.videogames = [action.payload, ...JSON.parse(state.originalvideogames)] 
-                : state.videogames = JSON.parse(state.originalvideogames),*/  //CAMBIE ESTO
+                return {...state , /*flagFilter: !state.flagFilter,*/ number:1,
                 originalvideogames: !action.payload.hasOwnProperty("error")? JSON.stringify([action.payload, ...JSON.parse(state.originalvideogames)])
                 : JSON.stringify(JSON.parse(state.originalvideogames)),
                 backErros: action.payload.hasOwnProperty("error") ? true : false,
@@ -40,7 +37,7 @@ const reducer = (state=initialState , action) => {
             :state.videogamesXpage}
         case GET_GAME_BY_NAME:
             return {...state , filtersapplied: ['', '', ''], gameCreated:false, backErros:false,
-            flagFilter: !state.flagFilter, videogames: action.payload};//videogamesXpage: action.payload };
+            flagFilter: !state.flagFilter, videogames: action.payload};
         case GET_GAME_DETAIL:
             return {...state , gameDetail: action.payload  ,  videogames: [],filtersapplied: ['', '', '']};
         case ORDER_VIDEOGAMES:
@@ -82,11 +79,9 @@ const reducer = (state=initialState , action) => {
 
 function orderAlf (a,b) {
     if ( a.name.toUpperCase() < b.name.toUpperCase() ){
-        console.log(a.name.toUpperCase(), b.name.toUpperCase())
         return -1;
     }
     if ( a.name.toUpperCase() > b.name.toUpperCase() ){
-        console.log(a.name.toUpperCase(), b.name.toUpperCase())
         return 1;
     }
       return 0;    
@@ -94,9 +89,7 @@ function orderAlf (a,b) {
 
 function typeOfCreation (payload , videogames , originalvideogames) {
     if (payload==="API"){
-        console.log("API")
         let games = videogames.filter((element) =>  typeof element.id === 'number' )
-        //console.log("games:",games);
         if (games.length) return games;
         else {
             videogames =JSON.parse(originalvideogames)
@@ -106,7 +99,6 @@ function typeOfCreation (payload , videogames , originalvideogames) {
     }
     else {
         let games = videogames.filter((element) => typeof element.id === 'string')
-        console.log(games)
         if (games.length) return games;
         else {
             videogames =JSON.parse(originalvideogames)

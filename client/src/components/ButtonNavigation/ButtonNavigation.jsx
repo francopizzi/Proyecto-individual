@@ -9,8 +9,7 @@ function ButtonNavigation({number}) {
 
   const reduxPage = useSelector((state)=> state.number);
   React.useEffect(() => {
-    console.log("cambio el numero a: " , reduxPage)
-    reduxPage != number ? setActive(false) : setActive(true);
+    parseInt(reduxPage) !== number ? setActive(false) : setActive(true);
   },[reduxPage]); 
 
 
@@ -18,7 +17,6 @@ function ButtonNavigation({number}) {
 
   function handlerChangePage (e) {
     dispatch(definePage(e.target.value));
-    //setActive(!isActive);
   }
   return (
     <div>

@@ -17,11 +17,11 @@ describe('Videogame model', () => {
       it('should work when has valid name, description, platforms and genres', () => {
         Videogame.create({ 
           name: 'Super Mario Bros',
-          description: 'Adventure game with Mario',
+          description: 'Adventure game with Mario', 
           platforms: ["PC","PlayStation 5"],
           genres: ["Action"]
         })
-        .then((response) => expect(response.name).to.equal('Super Mario Bros'))
+        .then((response) => expect(response.name).to.equal('SUPER MARIO BROS'))
         .then((response) => expect(response.description).to.equal('Adventure game with Mario'))
         .then((response) => expect(response.platforms[0]).to.equal('PC'))
       });

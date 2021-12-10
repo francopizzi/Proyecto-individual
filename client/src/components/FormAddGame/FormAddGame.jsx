@@ -2,26 +2,25 @@ import React from 'react';
 import { useDispatch} from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import {createGame , backendErros , deleteGames} from '../../store/actions'
+import {createGame , deleteGames} from '../../store/actions'
 
 import style from './FormAddGame.module.css';
 
 
 export default function FormAddGame () {
-
+/*
     const [created, changeCreated] = useState({
       name: ''
-    });
+    }); */
 
     React.useEffect(() => {
-    console.log("Elimine todos los juegos")
     dispatch(deleteGames());
-    changeCreated('');
+    //changeCreated('');
     },[]);
 
     
-    const {genres , backErros , originalvideogames , gameCreated} = useSelector(state => state);
-    // CONSULTAR SI PUEDO UTILIZAR LA RUTA PARA LAS PLATAFORMAS
+    const {genres , backErros , gameCreated} = useSelector(state => state);
+   
     const platforms = ["PC","PlayStation 5","PlayStation 4","PlayStation 3","PlayStation 2","PlayStation",
     "PS Vita", "PSP","Xbox One","Xbox Series S/X","Xbox 360","Xbox","iOS","Android",
     "macOS","Classic Macintosh","Apple II","Linux","Nintendo Switch","Nintendo 3DS","Nintendo DS",
@@ -42,7 +41,7 @@ export default function FormAddGame () {
         errors: {
             name: 'Nombre no puede estar vacio',
             description: 'Descripción no puede estar vacio',
-            released: '',//PUEDO BORRRAR ESTO PORQUE NO LO USO
+           // released: '',//PUEDO BORRRAR ESTO PORQUE NO LO USO
             rating: 'El rating debe ser un valor entre 0 y 5',
             platforms: 'Debe incluir al menos una plataforma',
             genres: 'Debe incluir al menos un género',
@@ -50,12 +49,7 @@ export default function FormAddGame () {
     });
 
     const [disabled , setDisabled] = useState(true);
-/*
-    if (backErros) {
-      alert("El juego con el nombre especificado ya existe en la base de datos");
-      dispatch(backendErros());
-    }
-*/
+
     function controlError (errors, name , value) {
         switch (name) {
             case 'name': 
@@ -96,8 +90,6 @@ export default function FormAddGame () {
     function handleChange(e) {
         const { value, name , label} = e.target;
         let {errors} = input;
-
-        //errors = controlError(errors , value , label);
         
         if(value === "genres" || value === "platforms") {
             setInput({
@@ -105,8 +97,6 @@ export default function FormAddGame () {
                 [value]: input[value].includes(label)?input[value].filter(element => element !== label):[...input[value], label],
                 errors
             });
-            //console.log(input);
-            //console.log(errors, value, label);
             errors = controlError(errors , value , label);
         }
         else{
@@ -122,9 +112,8 @@ export default function FormAddGame () {
 
       function handleSubmit (e){
         e.preventDefault();
-        console.log(input);
         dispatch(createGame(input));
-        changeCreated({...created , name:input.name}); 
+        //changeCreated({...created , name:input.name}); 
         setInput({
             name: '',
             description: '',
@@ -136,7 +125,7 @@ export default function FormAddGame () {
             errors: {
               name: 'Nombre no puede estar vacio',
               description: 'Descripcion no puede estar vacio',
-              released: '',
+              //released: '',
               rating: 'El rating debe ser un valor entre 0 y 5',
               platforms: 'Debe incluir al menos una plataforma',
               genres: 'Debe incluir al menos un genero',
@@ -155,7 +144,7 @@ export default function FormAddGame () {
       :
         <div className={style.grid}>
           {
-            gameCreated?/*(JSON.parse(originalvideogames)[0].name === created.name )?*/
+            gameCreated?
             <div className={style.alert2}>
                 <h1 className={style.complete}>MISSION COMPLETE</h1> 
                 <h1 className={style.text}>El juego se creó correctamente</h1>
@@ -165,7 +154,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label}>Nombre</label>
                   <input
-                  autocomplete="off"
+                  autoComplete="off"
                   className={style.input}
                   name="name"
                   type="text"
@@ -205,7 +194,7 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Fecha de lanzamiento</label>
                   <input 
-                  autocomplete="off"
+                  autoComplete="off"
                   className={style.input}
                   type="date"
                   name="released"
@@ -215,9 +204,9 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Rating</label>
                   <input 
-                  autocomplete="off"
+                  autoComplete="off"
                   className={style.input}
-                  type="text"  //Ver si modifico esto por un number y en la base de datos por in Interger
+                  type="text"  
                   name="rating"
                   value={input.rating}
                   onChange={handleChange}
@@ -227,14 +216,12 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Géneros</label>
                   <input 
-                  autocomplete="off"
+                  autoComplete="off"
                   className={style.input}
                   name="genres" 
                   multiple 
                   type="text" 
-                //list="genres"
                   value = {input.genres}
-                //onChange={handleChange}
                   placeholder = "Seleccione los géneros"
                   />
                   {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
@@ -247,14 +234,12 @@ export default function FormAddGame () {
                 <div className={style.container}>
                   <label className={style.label} >Plataformas</label>
                   <input
-                  autocomplete="off"
+                  autoComplete="off"
                   className={style.input}
                   type="text"
                   multiple
                   name="platforms"
-                  //list="platforms"
                   value={input.platforms}
-                  //onChange={handleChange}
                   placeholder = "Seleccione las plataformas"
                   />
                   {!input.errors.platforms ? null : <div className={style.error}>{input.errors.platforms}</div>}

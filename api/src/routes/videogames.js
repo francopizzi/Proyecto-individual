@@ -3,10 +3,12 @@ const { Videogame , Genre }= require('../db');
 const {Op} = require('sequelize');
 const axios  = require('axios');
 const router = Router();
-
+/*
 const {
     API_KEY
   } = process.env;
+*/
+const API_KEY="88746d59f283472eafe6adbe231549ca"
 
   function orderRatingAsc (a,b) {
     if ( a.rating < b.rating )return -1;
@@ -20,7 +22,6 @@ function orderRatingDesc (a,b) {
 }
 
 function compare (element , filter){ 
-    console.log(element)
     for (let i=0; i< element.length ; i++)
     {
       if (element[i].name === filter)
@@ -36,7 +37,7 @@ router.post ('/:filter', (req,res,next)=> {
     const {filter} = req.params;
     const games = req.body;
     let auxGames=[]
-    console.log(filter);
+    
     if (filter === "Ascendente") {
         games.sort(orderRatingAsc);
         games.forEach(element => {
@@ -74,8 +75,6 @@ router.post ('/:filter', (req,res,next)=> {
             })
         });
     }
-    //console.log(auxGames[0]);
-    //console.log(filter);
     res.send({games: auxGames, filter});
 })
 
@@ -89,7 +88,6 @@ router.get('/' , (req,res,next) => {
 
     if (name) {
     try {
-        console.log(name.toUpperCase())
         let promiseAllGamesDB = Videogame.findAll({
             where: {
                name: {[Op.iLike]: "%" + name.toUpperCase() + "%"}
@@ -107,7 +105,6 @@ router.get('/' , (req,res,next) => {
             let [AllGamesDB , AllGamesAPI] = response;
             let allGames = [...AllGamesDB , ...AllGamesAPI.data.results]
             let auxGames = []
-            //console.log("juegos de la base de datos" , AllGamesDB)
             
             if (!allGames.length) return res.status(404).send("No existe ningun juego con el nombre solicitado");
             

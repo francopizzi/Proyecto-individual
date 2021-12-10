@@ -12,24 +12,19 @@ export default function EachFilter ({name, lista}) {
     function handlerFilters (e) {
         // despacho un filtro con el nombre
         if (e.target.name === "Alfabético") {
-            console.log(e.target.value)
             dispatch(orderGamesAlf(e.target.value));
         }
         if (e.target.name === "Quitar filtros") {
-            console.log(e.target.name)
             dispatch(deleteFilters());
         }
         if (e.target.name === "¿Dónde se creó?" ) {
-            console.log(e.target.value)
             dispatch(createdType(e.target.value))
         }
         if (e.target.name === "Rating") {
-            console.log(e.target.value)
             dispatch(gameByRating(e.target.value , videogames))
         }
         if (e.target.name === "Género") {
-            console.log("Soy e value",e.target.value)
-            dispatch(genreFilter(e.target.value , videogames)) //ACA AGREGUE videogames
+            dispatch(genreFilter(e.target.value , videogames)) 
         }
     }
 

@@ -11,11 +11,11 @@ function CardVideogame({id, name, backgroundImage, genres}) {
             <p className={style.titleGenre}>Géneros:</p>
             <div className={style.genres}>    
             {
-              genres.map ((genre,index)=> <h2 key={index} className={style.genre}>{genre.name}</h2>)
+              genres && genres.map ((genre,index)=> <h2 key={index} className={style.genre}>{genre.name}</h2>)
             }
+            </div>
           </div>
-          </div>
-          <img className={style.img}src={backgroundImage}/>
+          <img alt="Imagen del juego" className={style.img}src={backgroundImage}/>
       </div>
       </Link>
     );

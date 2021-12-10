@@ -27,37 +27,18 @@ describe('Videogame routes', () => {
       })
       .expect(200);
   });
-  /*
-  beforeEach(() => Videogame.sync({ force: true })
-    .then(() => Videogame.create(videogame)));
-  describe('POST /videogame', () => {
-    it('should get 200', () =>
-      agent.get('/videogame').expect(200)
-    );
-  });
-  */
-  it('setea correctamente el juego en la base de datos', function(){
-    return agent.post('/videogame')
+  it('setea correctamente el juego en la base de datos',  async function(){
+     return agent.post('/videogame')
       .send({
         name: 'Super Mario Bros 2',
         description: 'Adventure game with Mario',
         platforms: ["PC","PlayStation 5"],
         genres: ["Action"]
       })
-      .then(() => {
-        return Videogame.findOne({
-          where: {
-            name: 'Super Mario Bros 2'
-          },
-          include: {
-            model: Genre
-          }
-        });
-      })
-      .then(response => {
-        expect(response.name).to.equal('Super Mario Bros 2');
-        expect(response.description).to.equal('Adventure game with Mario');
-      });
+      .then((response) => {
+        expect(response.body.name).to.equal('SUPER MARIO BROS 2');
+        expect(response.body.description).to.equal('Adventure game with Mario');
+      }); 
   }); 
 });
 after(()=> Videogame.sync({force:true}));

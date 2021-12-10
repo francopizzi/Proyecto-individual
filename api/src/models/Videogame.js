@@ -31,5 +31,9 @@ module.exports = (sequelize) => {
     background_image: {
       type: DataTypes.STRING, 
     }
+    /*,
+    created: {
+      type: DataTypes.BOOLEAN,
+    }*/
   });
 };
