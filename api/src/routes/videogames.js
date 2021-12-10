@@ -3,12 +3,11 @@ const { Videogame , Genre }= require('../db');
 const {Op} = require('sequelize');
 const axios  = require('axios');
 const router = Router();
-/*
+
 const {
     API_KEY
   } = process.env;
-*/
-const API_KEY="88746d59f283472eafe6adbe231549ca"
+
 
   function orderRatingAsc (a,b) {
     if ( a.rating < b.rating )return -1;
