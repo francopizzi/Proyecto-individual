@@ -140,7 +140,7 @@ export function getGameByName (gameName) {
 
 export function getAllGames (){
         return function (dispatch){
-                fetch("http://localhost:3001/videogames")
+                fetch("https://apivideogames.herokuapp.com//videogames")
               .then((response) => response.json())
               .then((data) => {
                 dispatch({ type: GET_ALL_GAMES, payload: data });
@@ -150,7 +150,7 @@ export function getAllGames (){
 
 export function getAllGenres () {
         return function (dispatch) {
-                fetch ("http://localhost:3001/genres")
+                fetch ("https://apivideogames.herokuapp.com//genres")
                 .then ((response)=> response.json())
                 .then((data)=> {
                         dispatch({type:GET_ALL_GENRES , payload: data})
