@@ -36,7 +36,7 @@ export function gameCreated () {
 export function createGame (game){
         
         return function (dispatch){
-                fetch("http://localhost:3001/videogame", {
+                fetch("https://apivideogames.herokuapp.com/videogame", {
                         method: 'POST',
                         headers: {
                           'Accept': 'application/json',
@@ -54,7 +54,7 @@ export function createGame (game){
 
 export function genreFilter (genre , games){
         return function (dispatch){
-                fetch("http://localhost:3001/videogames/"+genre, {
+                fetch("https://apivideogames.herokuapp.com/videogames/"+genre, {
                         method: 'POST',
                         headers: {
                           'Accept': 'application/json',
@@ -71,7 +71,7 @@ export function genreFilter (genre , games){
 
 export function gameByRating (order, games){
         return function (dispatch){
-                fetch("http://localhost:3001/videogames/"+order, {
+                fetch("https://apivideogames.herokuapp.com/videogames/"+order, {
                         method: 'POST',
                         headers: {
                           'Accept': 'application/json',
@@ -108,7 +108,7 @@ export function orderGamesAlf (tipo) {
 
 export function getGameDetail (id){
         return function (dispatch){
-                fetch("http://localhost:3001/videogame/"+id)
+                fetch("https://apivideogames.herokuapp.com/videogame/"+id)
                 .then((response) => response.json())
                 .then((data) => {
                 dispatch({ type: GET_GAME_DETAIL, payload: data });
@@ -130,7 +130,7 @@ export function getGamesxPage (pageNumber) {
 
 export function getGameByName (gameName) {
         return function (dispatch){
-                fetch("http://localhost:3001/videogames?name="+gameName)
+                fetch("https://apivideogames.herokuapp.com/videogames?name="+gameName)
                 .then((response) => response.json())
                 .then((data) => {
                 dispatch({ type: GET_GAME_BY_NAME, payload: data });
