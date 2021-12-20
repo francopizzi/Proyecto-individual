@@ -57,8 +57,6 @@
         display: grid;
         grid-template-rows: 100px 40px;
         grid-template-columns: repeat(8,1fr);
-        background-color: #001D3D;
-        margin-bottom: 2rem;
     }
 
     .logo {
