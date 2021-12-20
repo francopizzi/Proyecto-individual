@@ -52,13 +52,11 @@
 
 @media screen and (max-width: 1000px) {
     .div {
-        width: 100vw;
+        width: 90vw;
         background-color: #001D3D;
         justify-content: center;
         /* margin-bottom: 1rem; */
-        margin-right: 1rem;
-        margin-left: 1rem;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
     }
     .input {
         width: 14em;
