@@ -59,4 +59,7 @@
         margin-right: 1rem;
         margin-left: 1rem;
     }
+    .input {
+        width: 14em;
+    }
 }

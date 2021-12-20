@@ -1,6 +1,7 @@
 .btn {
     background-color: #70e000;
-    width: 150%;
+    width: max-content;
+    color: black;
     height: 1.7rem;
     border-color: transparent;
     border-radius: 1rem;
@@ -15,10 +16,11 @@
     color: white;
     cursor: pointer;
 }
-
+/*
 @media screen and (max-width: 1200px) {
     .btn {
         width: 100%;
         color: black;
     }
 }
+*/

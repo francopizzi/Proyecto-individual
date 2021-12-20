@@ -41,6 +41,7 @@
     justify-self: center;
 }
 
+/*
 @media screen and (max-width: 1200px) {
     .addGame {
         grid-column: 4/6;
@@ -49,9 +50,10 @@
         grid-column: 6/9;
     }
 }
-
+*/
 @media screen and (max-width: 1000px) {
     .grid {
+        padding-bottom: 1rem;
         grid-row: 1;
         grid-column: 1/9;
         display: grid;
