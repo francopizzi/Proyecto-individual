@@ -68,7 +68,7 @@
 @media screen and (max-width: 1000px)
 {
     .grid {
-        margin-top: 2rem;
+        padding-top: 1rem;
         grid-row: 2;
         grid-column: 1 /9;
         display: grid;
