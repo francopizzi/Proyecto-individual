@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
 .btn {
     background-color: #70e000;
+    color: black;
     width: 50%;
     height: 1.7rem;
     border-color: transparent;

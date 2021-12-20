@@ -32,6 +32,7 @@
 
 .btn {
     background-color: #70e000;
+    color: black;
     width: auto;
     height: 1.7rem;
     border-color: transparent;
@@ -56,5 +57,4 @@
         justify-content: center;
         margin-bottom: 1.5rem;
     }
-
 }
