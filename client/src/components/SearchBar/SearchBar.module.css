@@ -53,7 +53,7 @@
 @media screen and (max-width: 1000px) {
     .div {
         width: 97vw;
-        background-color: #001D3D;
+        /* background-color: #001D3D; */
         justify-content: center;
         /* margin-bottom: 1rem; */
         padding-bottom: 1rem;

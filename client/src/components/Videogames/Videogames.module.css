@@ -7,7 +7,6 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     margin-right: 2rem;
-    
 }
 .conteiner {
     grid-row: 1;
@@ -69,7 +68,6 @@
 @media screen and (max-width: 1000px)
 {
     .grid {
-        padding-top: 3rem;
         grid-row: 2;
         grid-column: 1 /9;
         display: grid;
