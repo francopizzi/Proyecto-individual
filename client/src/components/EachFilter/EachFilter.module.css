@@ -5,9 +5,9 @@
 }
 
 .eachFilter>li:hover>ul {
-    display:block;
-    
+    display:block; 
 }
+
 
 .eachFilter>li:hover>button {
     background-color: #bc00dd;
@@ -20,7 +20,7 @@
 
 .btn {
     background-color: #70e000;
-    width: 75%;
+    width: fit-content;
     height: 1.7rem;
     border-color: transparent;
     border-radius: 1rem;
@@ -39,7 +39,7 @@
 
 .btn2 {
     background-color: #70e000; 
-    width: 75%;
+    width: fit-content;  /*75%;*/
     height: 1.7rem;
     border-color: transparent;
     border-radius: 1rem;
@@ -56,4 +56,14 @@
     background-color: #bc00dd; 
     color: white;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1200px)
+{
+    .btn {
+        font-size: 0.9rem;
+    }
+    .btn2 {
+        font-size: 0.6rem;
+    }
 }

@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
 
 .div {
-    width: 140%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .input {
@@ -30,11 +32,11 @@
 
 .btn {
     background-color: #70e000;
-    width:25%;
+    width: auto;
     height: 1.7rem;
     border-color: transparent;
     border-radius: 1rem;
-    margin: 1%;
+    margin: 5%;
     
     font-family: 'Bangers', cursive;
     font-size: 1.2rem;
@@ -46,3 +48,16 @@
     background-color: #bc00dd;
     cursor: pointer;
 }
+/*
+@media screen and (max-width: 1200px) {
+    .div {
+        width: auto;
+    }
+    .btn {
+        width: 20%;
+    }
+    .input {
+        width: 13em;
+    }
+}
+*/

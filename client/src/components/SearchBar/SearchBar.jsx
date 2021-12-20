@@ -22,8 +22,8 @@ function SearchBar() {
   }
   
   return (
-    <div className={style.div}>
-       <form onClick={(e)=> handlerFindGame(e)}>
+    <div>
+       <form className={style.div} onClick={(e)=> handlerFindGame(e)}>
            <input value={state}onChange={handlerInput} placeholder="Ingrese el juego"
            className={style.input}></input>
            <Link  to='/home/videogames'>

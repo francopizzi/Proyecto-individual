@@ -11,19 +11,19 @@ export default function EachFilter ({name, lista}) {
     
     function handlerFilters (e) {
         // despacho un filtro con el nombre
-        if (e.target.name === "Alfabético") {
+        if (e.target.name === "Alfabético" && e.target.value) {
             dispatch(orderGamesAlf(e.target.value));
         }
         if (e.target.name === "Quitar filtros") {
             dispatch(deleteFilters());
         }
-        if (e.target.name === "¿Dónde se creó?" ) {
+        if (e.target.name === "¿Dónde se creó?" && e.target.value ) {
             dispatch(createdType(e.target.value))
         }
-        if (e.target.name === "Rating") {
+        if (e.target.name === "Rating" && e.target.value) {
             dispatch(gameByRating(e.target.value , videogames))
         }
-        if (e.target.name === "Género") {
+        if (e.target.name === "Género" && e.target.value) {
             dispatch(genreFilter(e.target.value , videogames)) 
         }
     }

@@ -222,3 +222,18 @@
     color: #058a26;
     text-align: center;
 }
+
+@media screen and (max-width: 1000px)
+{
+    .grid {
+        grid-column: 2 / 8;
+    }
+}
+@media screen and (max-width: 600px)
+{
+    .grid {
+        grid-column: 1 / 9;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
