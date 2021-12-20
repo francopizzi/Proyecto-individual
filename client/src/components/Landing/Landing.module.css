@@ -78,7 +78,6 @@
     font-family: 'VT323', monospace;
     font-size: 1.25rem;
     letter-spacing: 0.05rem;
-    text-align: left;
     padding-right: 1.2rem;
 }
 
@@ -112,6 +111,6 @@
 @media screen and (max-width: 390px)
 {
     .btn {
-        font-size: 0.5rem;
+        font-size: 0.4rem;
     }
 }
