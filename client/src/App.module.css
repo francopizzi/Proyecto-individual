@@ -3,10 +3,17 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 100px auto auto;
+    row-gap: 0.5rem;
 }
 
 .bk {
     background-color: #001D3D;
     max-width: 100vw;
-    min-height: 100vmin;
+     min-height: 100vmax;
+}
+
+@media screen and (max-width: 1000px) {
+    .grid {
+        grid-template-rows: 140px auto auto;
+    }
 }
