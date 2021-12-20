@@ -5,7 +5,8 @@
 }
 
 .grid {
-    padding-top: 1.5rem;
+    padding-top: 3rem;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 2fr;  
     grid-template-rows: 50px auto;

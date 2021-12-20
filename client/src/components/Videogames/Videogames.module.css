@@ -3,6 +3,7 @@
 .grid {
     grid-row: 2;
     grid-column: 1 /9;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     margin-right: 2rem;
