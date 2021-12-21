@@ -70,6 +70,7 @@ The front end was made using React, and Redux for managing application states. A
 
 ## - Quick Start
 - Clone repository
+- You must create a data base in postgres call videogames
 - Run the next commands on the folders /api  & /client
 - npm install
 - npm start
