@@ -9,7 +9,7 @@
 .bk {
     background-color: #001D3D;
     max-width: 100vw;
-     min-height: 100vmax;
+    min-height: 100vh; 
 }
 
 @media screen and (max-width: 1000px) {
