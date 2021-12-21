@@ -227,7 +227,7 @@ export default function FormAddGame () {
                   {!input.errors.genres ? null : <div className={style.error}>{input.errors.genres}</div>}
                   <select  className={`${style.select}`} multiple  value={input.genres} onClick={handleChange}>
                   {
-                    genres.map ((element) => <option key = {element.id} value="genres" label={element.name}/>)
+                    genres.map ((element) => <option key = {element.id} value="genres" label={element.name}>{element.name}</option>)
                   }
                   </select>
                 </div>  
@@ -245,7 +245,7 @@ export default function FormAddGame () {
                   {!input.errors.platforms ? null : <div className={style.error}>{input.errors.platforms}</div>}
                   <select  className={style.select} multiple  value={input.platforms} onClick={handleChange}>
                   {
-                    platforms.map ((element,index) => <option key = {index} value="platforms" label={element}/>)
+                    platforms.map ((element,index) => <option key = {index} value="platforms" label={element}>{element}</option>)
                   }
                   </select>
                 </div>
