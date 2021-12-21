@@ -95,17 +95,6 @@
     }
     
     .btn {
-    /*
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: #FF002B;
-    height: 10vw;
-    width:  10vw;
-    border-radius: 50%;
-    border: 1px solid #FF002B;
-    box-shadow: 0px 5px 0px #ad080f;
-    font-family: 'VT323', monospace;
-    */
     font-size: 0.9rem;
     letter-spacing: 0.05rem;
     
@@ -116,5 +105,68 @@
 {
     .btn {
         font-size: 0.6rem;
+    }
+}
+
+
+@media screen and (max-height: 1390px)
+{
+    .btn_pos {
+        top: 56vh;
+    }
+}
+
+@media screen and (max-height: 1200px)
+{
+    .btn_pos {
+        top: 58vh;
+    }
+}
+
+@media screen and (max-height: 900px)
+{
+    .btn_pos {
+        top: 60vh;
+    }
+}
+@media screen and (max-height: 700px)
+{
+    .btn_pos {
+        top: 62vh;
+    }
+}
+
+@media screen and (max-height: 600px)
+{
+    .btn_pos {
+        top: 65vh;
+    }
+}
+
+@media screen and (max-height: 500px)
+{
+    .btn_pos {
+        top: 67vh;
+    }
+}
+
+@media screen and (max-height: 400px)
+{
+    .btn_pos {
+        top: 70vh;
+    }
+}
+
+@media screen and (max-height: 400px)
+{
+    .btn_pos {
+        top: 73vh;
+    }
+}
+
+@media screen and (min-width: 1900px)
+{
+    .btn_pos {
+        left: 48.5vw;
     }
 }
