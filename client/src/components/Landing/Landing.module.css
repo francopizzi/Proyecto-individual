@@ -103,6 +103,9 @@
 }
 @media screen and (max-width: 390px)
 {
+    .btn_pos {
+        left: 43vw;
+    }
     .btn {
         font-size: 0.6rem;
     }
@@ -129,24 +132,26 @@
         top: 60vh;
     }
 }
+
+
 @media screen and (max-height: 700px)
 {
     .btn_pos {
-        top: 62vh;
+        top: 59vh;
     }
 }
 
 @media screen and (max-height: 600px)
 {
     .btn_pos {
-        top: 65vh;
+        top: 62vh;
     }
 }
 
 @media screen and (max-height: 500px)
 {
     .btn_pos {
-        top: 67vh;
+        top: 68vh;
     }
 }
 
@@ -157,7 +162,7 @@
     }
 }
 
-@media screen and (max-height: 400px)
+@media screen and (max-height: 300px)
 {
     .btn_pos {
         top: 73vh;
