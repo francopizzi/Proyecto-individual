@@ -25,6 +25,7 @@ The front end was made using React, and Redux for managing application states. A
 
 - *Tablet version* 📲
 
+![image](https://user-images.githubusercontent.com/72042861/146926819-8c158779-23c9-4ff7-972f-8082288c653d.png)
 
 
 
@@ -85,5 +86,6 @@ The front end was made using React, and Redux for managing application states. A
 - Sequelize
 - PostgreSQL
 - <a href="https://rawg.io/">API</a>
-- Front end deployment <a href="https://vercel.com//">Vercel</a>
+- Front end deployment <a href="https://vercel.com/">Vercel</a>
+- Back end deployment <a href="https://www.heroku.com/">Heroku</a>
 
